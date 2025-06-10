@@ -31,19 +31,21 @@ app/
 ## Instalación
 
 1. Clona este repositorio.
-2. Instala las dependencias:
+   
+3. Instala las dependencias:
    ```
    npm install
    ```
-3. Inicia el servidor:
+4. Inicia el servidor:
    ```
-   node app/index.js
+   npm run dev
    ```
-4. Abre tu navegador en [http://localhost:3000](http://localhost:3000)
+5. Abre tu navegador en [http://localhost:3000](http://localhost:3000)
 
 ## Dependencias
 
 - express
+- path
 
 ## Notas
 
