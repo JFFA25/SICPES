@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro</title>
+    <link rel="icon" href="/assets/icon.ico" type="image/icon">
+    <link rel="stylesheet" href="/register.css">
+</head>
+<body>
+    <div class="register-box">
+        <div class="register-header">
+            <a href="/"><img src="/assets/icon.ico" alt="Logo" class="register-logo" ></a>
+            <h2>Crear cuenta</h2>
+            <p>Regístrate para acceder al sistema</p>
+        </div>
+        <form action="/register" method="POST" class="register-form">
+            <div class="form-group">
+                <label for="correo">Correo electrónico</label>
+                <input type="email" id="correo" name="correo" required placeholder="Ingresa tu correo electrónico">
+            </div>
+            <div class="form-group">
+                <label for="contrasena">Contraseña</label>
+                <input type="password" id="contrasena" name="contrasena" required placeholder="Crear contraseña">
+            </div>
+            <div class="form-group">
+                <label for="confirmContrasena">Confirmar Contraseña</label>
+                <input type="password" id="confirmContrasena" name="confirmContrasena" required placeholder="Confirmar contraseña">
+            </div>
+            <button type="submit" class="register-btn">Registrarse</button>
+            <div class="register-links">
+               <p>Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
+            </div>
+        </form>
+    </div>
+</body>
+</html>

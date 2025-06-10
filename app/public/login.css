@@ -1,0 +1,122 @@
+body {
+    background: #f3f6fb;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.login-box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 32px 28px 24px 28px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.login-header {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.login-logo {
+    width: 48px;
+    margin-bottom: 10px;
+}
+
+.login-header h2 {
+    margin: 0 0 6px 0;
+    font-size: 1.4rem;
+    color: #00b05b;
+    font-weight: bold;
+}
+
+.login-header p {
+    margin: 0;
+    color: #222;
+    font-size: 1rem;
+}
+
+.login-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #00b05b;
+    font-size: 0.98rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.login-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    box-sizing: border-box;
+    /* Para que el ancho sea igual */
+    height: 42px; /* Misma altura para input y botón */
+    transition: border 0.2s, background 0.2s;
+}
+
+.form-group input {
+    border: 1.5px solid #00b05b;
+    color: #222;
+    background: #fff;
+    outline: none;
+    font-weight: 400;
+}
+
+.form-group input:focus {
+    border: 2px solid #00b05b;
+}
+
+.login-btn {
+    background: #00b05b;
+    color: #fff;
+    border: none;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.login-btn:hover {
+    background: #00994c;
+}
+
+.login-links {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 0.97rem;
+}
+
+.login-links a {
+    margin: 0 4px;
+    font-weight: 500;
+    text-decoration: none;
+}
+
+.login-links a:first-child {
+    color: #222;
+    text-decoration: underline;
+}
+
+.login-links a:last-child {
+    color: #00b05b;
+    text-decoration: underline;
+}
+
+.login-links a:hover {
+    opacity: 0.8;
+}
