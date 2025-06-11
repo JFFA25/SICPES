@@ -1,0 +1,97 @@
+/* Reset básico */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color: #f4f4f4;
+}
+
+/* NAVBAR */
+.navbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px 40px;
+  background-color: white;
+  box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+}
+
+.logo {
+  font-weight: bold;
+  font-size: 1.2rem;
+  color: #007c3f;
+}
+
+.nav-links a {
+  margin-left: 20px;
+  text-decoration: none;
+  color:#00a859;
+  font-weight: 500;
+}
+
+.btn-login {
+  border: 1.5px solid #007c3f;
+  padding: 6px 12px;
+  border-radius: 6px;
+  color: #007c3f;
+  transition: 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #007c3f;
+  color: white;
+}
+
+/* CONTACTO */
+.contenedor {
+  max-width: 900px;
+  margin: 50px auto;
+  padding: 0 20px;
+}
+
+.seccion-contacto h1 {
+  text-align: center;
+  font-size: 2.2rem;
+  color: #1a1a1a;
+  margin-bottom: 20px;
+}
+
+.descripcion {
+  text-align: justify;
+  font-size: 1rem;
+  margin-bottom: 30px;
+  color: #444;
+  line-height: 1.7;
+}
+
+.tarjeta {
+  background-color: white;
+  padding: 20px 25px;
+  margin-bottom: 20px;
+  border-radius: 10px;
+  box-shadow: 0 1px 8px rgba(0,0,0,0.05);
+}
+
+.tarjeta h2 {
+  font-size: 1.2rem;
+  color: #007c3f;
+  margin-bottom: 15px;
+}
+
+.tarjeta p {
+  margin-bottom: 10px;
+  color: #333;
+}
+
+a {
+  color: #007c3f;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
