@@ -1,0 +1,150 @@
+body {
+    background: #f3f6fb;
+    font-family: 'Segoe UI', Arial, sans-serif;
+    margin: 0;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.register-box {
+    background: #fff;
+    border-radius: 12px;
+    box-shadow: 0 4px 24px rgba(0,0,0,0.08);
+    padding: 32px 28px 24px 28px;
+    width: 340px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.register-header {
+    text-align: center;
+    margin-bottom: 18px;
+}
+
+.register-logo {
+    width: 48px;
+    margin-bottom: 10px;
+}
+
+.register-header h2 {
+    margin: 0 0 6px 0;
+    font-size: 1.4rem;
+    color: #00b05b;
+    font-weight: bold;
+}
+
+.register-header p {
+    margin: 0;
+    color: #222;
+    font-size: 1rem;
+}
+
+.register-form {
+    width: 100%;
+}
+
+.form-group {
+    margin-bottom: 16px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 6px;
+    color: #00b05b;
+    font-size: 0.98rem;
+    font-weight: 500;
+}
+
+.form-group input,
+.register-btn {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-weight: 600;
+    box-sizing: border-box;
+    height: 42px;
+    transition: border 0.2s, background 0.2s;
+}
+
+.form-group input {
+    border: 1.5px solid #00b05b;
+    color: #222;
+    background: #fff;
+    outline: none;
+    font-weight: 400;
+}
+
+.form-group input:focus {
+    border: 2px solid #00b05b;
+}
+
+.register-btn {
+    background: #00b05b;
+    color: #fff;
+    border: none;
+    margin-top: 8px;
+    cursor: pointer;
+}
+
+.register-btn:hover {
+    background: #00994c;
+}
+
+.register-links {
+    margin-top: 14px;
+    text-align: center;
+    font-size: 0.97rem;
+}
+
+.register-links a {
+    color: #00b05b;
+    text-decoration: underline;
+    font-weight: 500;
+}
+
+.register-links a:hover {
+    opacity: 0.8;
+}
+.register-box {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.5s ease forwards;
+  will-change: opacity, transform;
+}
+
+@keyframes fadeInUp {
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.register-logo {
+  display: inline-block;
+  animation: pulseLogo 3s ease-in-out infinite;
+  transform-origin: center center;
+  will-change: transform, filter;
+}
+
+@keyframes pulseLogo {
+  0%, 100% {
+    transform: scale(1);
+    filter: brightness(1);
+  }
+  50% {
+    transform: scale(1.04);
+    filter: brightness(1.1);
+  }
+}
+
+.register-btn {
+  transition: background-color 0.3s ease, transform 0.3s ease;
+}
+
+.register-btn:hover {
+  transform: scale(1.05);
+}

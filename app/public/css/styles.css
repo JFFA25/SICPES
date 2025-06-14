@@ -1,0 +1,150 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  background-color: #00b15d;
+  color: white;
+}
+
+.navbar {
+  background-color: #ffffff;
+  padding: 1rem 2rem;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.logo {
+  font-size: 1.2rem;
+  font-weight: bold;
+  color: #007c3f;
+}
+
+.navbar nav a {
+  margin-left: 20px;
+  text-decoration: none;
+  color: #007c3f;
+  font-weight: 500;
+  transition: color 0.3s;
+}
+
+.navbar nav a:hover {
+  color: #00a859;
+}
+
+
+.btn-login {
+  border: 1px solid #00a859;
+  padding: 6px 12px;
+  border-radius: 5px;
+  color: #00a859;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.btn-login:hover {
+  background-color: #00a859;
+  color: white !important;
+}
+
+.hero {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 60px 40px;
+  flex-wrap: wrap;
+  gap: 40px;
+}
+
+.hero .texto {
+  flex: 1;
+  min-width: 280px;
+}
+
+.hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 20px;
+}
+
+.hero p {
+  font-size: 1.1rem;
+  margin-bottom: 30px;
+  line-height: 1.5;
+}
+
+.btn-principal {
+  background-color: white;
+  color: #00a859;
+  padding: 12px 25px;
+  text-decoration: none;
+  font-weight: bold;
+  border-radius: 5px;
+}
+
+.imagen {
+  flex: 1;
+  text-align: center;
+  min-width: 280px;
+}
+
+.imagen img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Media query para pantallas pequeñas */
+@media screen and (max-width: 768px) {
+  .hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 40px 20px;
+  }
+
+  .hero h1 {
+    font-size: 2rem;
+  }
+
+  .hero p {
+    font-size: 1rem;
+  }
+
+  .navbar {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.5rem;
+  }
+
+  .navbar nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+
+  .navbar nav a {
+    margin: 5px 10px 0 0;
+  }
+}
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+.hero .texto {
+  animation: slideInLeft 1s ease-out both;
+}
+
+.imagen {
+  animation: slideInLeft 1s ease-out both;
+  animation-delay: 0.3s;
+}
+
+

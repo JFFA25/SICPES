@@ -1,44 +1,90 @@
 <!DOCTYPE html>
 <html lang="es">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Contacto - Alumnos Pensionados</title>
-  <link rel="stylesheet" href="contact.css" />
-</head>
-<body>
-  <header class="navbar">
-    <div class="logo">Alumnos Pensionados</div>
-    <nav class="nav-links">
-      <a href="/">Inicio</a>
-      <a href="#">Beneficios</a>
-      <a href="/contact">Contacto</a>
-      <a href="/register">Regístrate</a>
-      <a href="/login" class="btn-login">Iniciar sesión</a>
-    </nav>
-  </header>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contacto</title>
+    <link rel="stylesheet" href="/css/contact.css" />
+    <link rel="icon" href="/assets/icon.png" type="image/icon" />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="logo">SICPES</div>
+      <nav>
+        <a href="/">Inicio</a>
+        <a href="/contact" class="active">Contacto</a>
+        <a href="/register">Regístrate</a>
+        <a href="/login" class="btn-login">Iniciar sesión</a>
+      </nav>
+    </header>
 
-  <main class="contenedor">
-    <section class="seccion-contacto">
-      <h1>CONTACTO</h1>
-      <p class="descripcion">
-        <em>Alumnos Pensionados</em> ha ayudado a miles de personas a mantenerse informadas sobre sus beneficios de pensión con precisión y compromiso.
-        Estamos aquí para ti.
-      </p>
+    <main class="contacto">
+      <section class="info-contacto">
+        <h1>Contacto</h1>
+        <p class="descripcion">
+          <em>SICPES</em> Se dedica a facilitar el acceso a opciones de
+          alojamiento para estudiantes
+        </p>
 
-      <div class="tarjeta">
-        <h2>Datos de contacto</h2>
-        <p><strong>Email:</strong> info@alumnospensionados.com</p>
-        <p><strong>Teléfono:</strong> 01-800-555-2025</p>
-        <p><strong>Fax:</strong> 01-800-999-7777</p>
-      </div>
+        <div class="tarjeta">
+          <h2>Datos de contacto</h2>
+          <br />
+          <p><strong>Email:</strong> sicpes.soporte@gmail.com</p>
+          <br />
+          <p><strong>Teléfono:</strong> 776-104-3056</p>
+          <br />
+          <h2>Redes Sociales</h2>
+          <br />
+          <div class="social-icons">
+            <a href="https://facebook.com" target="_blank" title="Facebook">
+              <img src="/assets/Facebook.png" alt="Facebook" />
+            </a>
+            <a href="https://twitter.com" target="_blank" title="Twitter">
+              <img src="/assets/X.png" alt="Twitter" />
+            </a>
+            <a href="https://instagram.com" target="_blank" title="Instagram">
+              <img src="/assets/Instagram.png" alt="Instagram" />
+            </a>
+          </div>
+          <br />
+          <h2>¿Dónde estamos?</h2>
+          <div class="mapa-ubicacion">
+            <iframe
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d1316.8096511691192!2d-97.95849956359777!3d20.23791173649569!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x85d08602491e37a1%3A0x4bbea4aede57d500!2sUniversidad%20Tecnol%C3%B3gica%20de%20Xicotepec%20de%20Ju%C3%A1rez!5e0!3m2!1ses!2smx!4v1749846297499!5m2!1ses!2smx"
+              width="100%"
+              height="300"
+              style="
+                border: 0;
+                border-radius: 10px;
+                box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+              "
+              allowfullscreen=""
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+            >
+            </iframe>
+          </div>
+        </div>
+      </section>
 
-      <div class="tarjeta">
-        <h2>Oficinas</h2>
-        <p><strong>Ciudad de México:</strong><br>Av. Reforma 100, CDMX, 06500 <a href="#">(Ver mapa)</a></p>
-        <p><strong>Guadalajara:</strong><br>Calle Juárez 200, Guadalajara, Jal. <a href="#">(Ver mapa)</a></p>
-      </div>
-    </section>
-  </main>
-</body>
+      <aside class="contacto-extra">
+        <div class="call-box">
+          <p>Llámanos al</p>
+          <strong>776-104-3056</strong>
+        </div>
+        <div class="img-box">
+          <img src="/assets/contact.jpg" alt="Atención al cliente" />
+          <section class="horarios">
+            <h2>Horarios de atención</h2>
+            <ul>
+              <li><strong>Lunes a Viernes:</strong> 9:00 AM - 6:00 PM</li>
+              <li><strong>Sábados:</strong> 10:00 AM - 2:00 PM</li>
+              <li><strong>Domingos:</strong> Cerrado</li>
+              <li><strong>Domingos:</strong> Cerrado</li>
+            </ul>
+          </section>
+        </div>
+      </aside>
+    </main>
+  </body>
 </html>
