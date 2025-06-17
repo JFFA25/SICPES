@@ -16,7 +16,12 @@
         <h2>Crear cuenta</h2>
         <p>Regístrate para acceder al sistema</p>
       </div>
-      <form action="/register" method="POST" class="register-form" id="registerForm">
+      <form
+        action="api/auth/register"
+        method="POST"
+        class="register-form"
+        id="registerForm"
+      >
         <div class="form-group">
           <label for="correo">Correo electrónico</label>
           <input
@@ -25,6 +30,7 @@
             name="email"
             required
             placeholder="Ingresa tu correo electrónico"
+            required
           />
         </div>
         <div class="form-group">
@@ -35,6 +41,7 @@
             name="password"
             required
             placeholder="Crear contraseña"
+            required
           />
         </div>
         <div class="form-group">
@@ -45,6 +52,7 @@
             name="confirmPassword"
             required
             placeholder="Confirmar contraseña"
+            required
           />
         </div>
         <button type="submit" class="register-btn">Registrarse</button>
@@ -52,6 +60,8 @@
           <p>Ya tienes cuenta? <a href="/login">Inicia sesión</a></p>
         </div>
       </form>
+      <!-- Aquí se mostrará el mensaje -->
+      <div id="mensaje" style="margin-top: 10px"></div>
     </div>
   </body>
   <script src="/js/auth/register.js"></script>
