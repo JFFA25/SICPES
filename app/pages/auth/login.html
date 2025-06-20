@@ -16,13 +16,13 @@
         <h2>Iniciar sesión</h2>
         <p>Accede a tu cuenta</p>
       </div>
-      <form action="/login" method="POST" class="login-form">
+      <form action="/api/auth/login" method="POST" class="login-form">
         <div class="form-group">
           <label for="correo">Correo</label>
           <input
             type="email"
             id="correo"
-            name="correo"
+            name="email"
             required
             placeholder="Ingresa tu correo electrónico"
             required 
@@ -32,8 +32,8 @@
           <label for="contrasena">Contraseña</label>
           <input
             type="password"
-            id="contrasena"
-            name="contrasena"
+            id="password"
+            name="password"
             required
             placeholder="Ingresa tu contraseña"
             required 

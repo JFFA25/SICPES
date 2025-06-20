@@ -101,21 +101,6 @@ h1 {
   text-decoration: none;
 }
 
-.call-box {
-  background: #e6f8ee;
-  padding: 1rem;
-  border-radius: 10px;
-  text-align: center;
-  font-size: 1rem;
-  color: #004d29;
-}
-
-.call-box strong {
-  display: block;
-  margin-top: 8px;
-  font-size: 1.3rem;
-}
-
 .img-box {
   background: #ffffff;
   border-radius: 10px;
