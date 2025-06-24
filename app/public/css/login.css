@@ -114,7 +114,7 @@ body {
 
 .login-links a:last-child {
     color: #00b05b;
-    text-decoration: underline;
+    text-decoration: none;
 }
 
 .login-links a:hover {

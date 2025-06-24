@@ -2,6 +2,8 @@ import { randomBytes } from 'crypto';
 import bcrypt from 'bcryptjs';
 import User from '../models/User.js';
 import { sendVerificationEmail } from '../utils/mailer.js';
+import { forgetPasswordEmail } from '../utils/forgetPassword.js';
+
 
 export const login = async (req, res) => {
   try {
@@ -30,7 +32,7 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: 'Correo o contraseña incorrectos.' });
     }
 
-    res.status(200).json({ message: 'Inicio de sesión exitoso.' });
+    return res.redirect('/home');
 
   } catch (err) {
     console.error(err);
@@ -57,21 +59,21 @@ export const register = async (req, res) => {
       return res.status(400).json({ error: 'El correo ya está registrado.' });
     }
 
-    // ✅ Hashear la contraseña
+    // Hashear la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);
 
     const verificationToken = randomBytes(32).toString('hex');
 
     const user = new User({
       email,
-      password: hashedPassword, // Usa la contraseña hasheada aquí
+      password: hashedPassword,
       verificationToken,
       verified: false
     });
 
     await user.save();
 
-    const verificationUrl = `http://localhost:3000/api/auth/verify-email?token=${verificationToken}`;
+    const verificationUrl = `http://localhost:3000/api/auth/verifyEmail?token=${verificationToken}`;
     await sendVerificationEmail(email, verificationUrl);
 
     res.status(201).json({ message: 'Usuario registrado. Revisa tu correo para verificar.' });
@@ -102,3 +104,58 @@ export const verifyEmail = async (req, res) => {
     res.status(500).send('Error interno del servidor.');
   }
 };
+
+export const forgetPassword = async (req, res) => {
+  const { email } = req.body;
+
+  try {
+    const user = await User.findOne({ email });
+    if (!user) return res.status(404).json({ message: 'Correo no registrado' });
+
+    // Genera token y fecha de expiración (15 minutos)
+    const token = randomBytes(32).toString('hex');
+    user.forgetPasswordToken = token;
+    user.forgetPasswordExpires = Date.now() + 1000 * 60 * 15; // 15 minutos
+    await user.save();
+
+    const resetUrl = `http://localhost:3000/resetPassword?token=${token}`;
+    await forgetPasswordEmail(user.email, resetUrl);
+
+    return res.status(200).json({ message: 'Se envió el correo de recuperación correctamente.' });
+
+  } catch (error) {
+    console.error('Error al enviar el correo:', error);
+    res.status(500).json({ message: 'Hubo un error al enviar el correo.' });
+  }
+};
+
+
+export const resetPassword = async (req, res) => {
+  const { token, password } = req.body;
+
+  try {
+    // Busca usuario con token válido y no expirado
+    const user = await User.findOne({
+      forgetPasswordToken: token,
+      forgetPasswordExpires: { $gt: Date.now() }
+    });
+
+    if (!user) {
+      return res.status(400).json({ message: 'El enlace ya fue utilizado o el token es inválido/expirado.' });
+    }
+
+    // Hashea la nueva contraseña
+    const hashedPassword = await bcrypt.hash(password, 10);
+
+    user.password = hashedPassword;
+    user.forgetPasswordToken = null; // Elimina el token para que sea de un solo uso
+    user.forgetPasswordExpires = null;
+    await user.save();
+
+    res.status(200).json({ message: 'Contraseña restablecida correctamente.' });
+  } catch (err) {
+    console.error(err);
+    res.status(500).json({ message: 'Error al restablecer la contraseña.' });
+  }
+};
+

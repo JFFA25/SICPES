@@ -18,6 +18,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true })); 
 app.use(express.static(path.join(__dirname, 'public')));
 
+
 app.use('/api/auth', usersRoutes);
 
 app.get('/', (req, res) =>
@@ -35,6 +36,17 @@ app.get('/register', (req, res) =>
 app.get('/verified', (req, res) =>
   res.sendFile(path.join(__dirname, 'pages/auth/verified.html'))
 );
+app.get('/home', (req, res) =>
+  res.sendFile(path.join(__dirname, 'pages/dashboard/home.html'))
+);
+app.get('/forgetPassword', (req, res) =>
+  res.sendFile(path.join(__dirname, 'pages/auth/forgetPassword.html'))
+);
+
+app.get('/resetPassword', (req, res) =>
+  res.sendFile(path.join(__dirname, 'pages/auth/resetPassword.html'))
+);
+
 
 
 app.listen(PORT, () => {

@@ -102,7 +102,7 @@ body {
 
 .register-links a {
     color: #00b05b;
-    text-decoration: underline;
+    text-decoration: none;
     font-weight: 500;
 }
 

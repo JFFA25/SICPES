@@ -1,10 +1,12 @@
 import { Router } from 'express';
-import { register , verifyEmail , login } from '../controllers/authentication.controller.js';
+import { register , verifyEmail , login,forgetPassword,resetPassword} from '../controllers/authentication.controller.js';
 
 const router = Router();
 router.post('/register', register); 
 router.post('/login', login);
-router.get('/verify-email', verifyEmail); 
+router.get('/verifyEmail', verifyEmail); 
+router.post('/forgetPassword',forgetPassword);
+router.post('/resetPassword',resetPassword); 
 
    
 export default router;
