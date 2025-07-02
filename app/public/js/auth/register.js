@@ -1,36 +1,45 @@
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
   e.preventDefault();
 
-  const email = e.target.elements.email.value;
-  const password = e.target.elements.password.value;
-  const confirmPassword = e.target.elements.confirmPassword.value;
-
-  const mensaje = document.getElementById('mensaje');
-  mensaje.textContent = '';
+  const email = e.target.elements.email;
+  const password = e.target.elements.password;
+  const confirmPassword = e.target.elements.confirmPassword;
 
   try {
     const response = await fetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ email, password, confirmPassword })
+      body: JSON.stringify({
+        email: email.value,
+        password: password.value,
+        confirmPassword: confirmPassword.value
+      })
     });
 
     let data;
     try {
       data = await response.json();
     } catch (err) {
-      throw new Error('No se pudo interpretar la respuesta del servidor.');
+      alert('No se pudo interpretar la respuesta del servidor.');
+      return;
     }
 
-    if (!response.ok) {
-      mensaje.textContent = data?.error || 'Ocurrió un error.';
-      mensaje.style.color = 'red';
-    } else {
-      mensaje.textContent = data.message || 'Registro exitoso.';
-      mensaje.style.color = 'green';
+    if (response.redirected) {
+      window.location.href = response.url;
+      return;
     }
+
+    if (!response.ok && data.error) {
+      alert(data.error);
+      return;
+    }
+
+    alert(data.message || 'Registro exitoso.');
+    e.target.reset();
+   
+
   } catch (err) {
     console.error(err);
-    mensaje.textContent = 'Error del servidor.';
-    mensaje.style.color = 'red';
-  }})
+    alert('Error del servidor.');
+  }
+});

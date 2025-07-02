@@ -4,8 +4,8 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Inicio</title>
-    <link rel="stylesheet" href="/css/home.css">
-    <link rel="icon" href="assets/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="icon" href="/assets/icon.png" type="image/x-icon" />
     <link
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
@@ -14,56 +14,36 @@
   <body>
     <div class="container">
       <aside class="sidebar">
-        <div class="logo">
-          <img src="assets/icon.png" alt="Residencia Dorada" />
-          <h1>SICPES</h1>
-        </div>
-        <ul class="nav-menu">
-          <li class="nav-item active">
-            <a href="#" class="nav-link">
-              <i class="fas fa-home"></i>
-              Inicio
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-bed"></i>
-              Habitaciones
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-users"></i>
-              Residentes
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-calendar-alt"></i>
-              Reservaciones
-            </a>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="fas fa-file-invoice-dollar"></i>
-              Pagos
-            </a>
-          </li>
-        </ul>
-        <div class="user-profile">
-          <div class="user-info">
-            <div class="user-avatar">JP</div>
-            <div class="user-details">
-              <span class="user-name">Juan Pérez</span>
-              <span class="user-role">Residente</span>
-            </div>
+        <div>
+          <div class="logo">
+            <img src="/assets/icon.png" alt="Residencia Dorada" />
+            <h1>SICPES</h1>
           </div>
+          <ul class="nav-menu">
+            <li class="nav-item active">
+              <a href="/home" class="nav-link"
+                ><i class="fas fa-home"></i> Inicio</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="/reservation" class="nav-link"
+                ><i class="fas fa-file-invoice-dollar"></i>Reservacion</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                ><i class="fas fa-file-invoice-dollar"></i> Pagos</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="user-profile">
           <button class="logout-btn">
             <i class="fas fa-sign-out-alt"></i>
             Cerrar sesión
           </button>
         </div>
       </aside>
-    </div>
-  </body>
-</html>
+      <main class="main-content">
+
+      </main>

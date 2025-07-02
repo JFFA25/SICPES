@@ -4,48 +4,45 @@ import User from '../models/User.js';
 import { sendVerificationEmail } from '../utils/mailer.js';
 import { forgetPasswordEmail } from '../utils/forgetPassword.js';
 
-
+//Validar usuario
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
 
     if (!email || !password) {
-      return res.status(400).json({ error: 'Todos los campos son obligatorios.' });
+      return res.status(400).json({ error: 'Todos los campos deben de ser completados.' });
     }
 
     const user = await User.findOne({ email });
     if (!user) {
-      console.log("Usuario no encontrado con ese correo.");
       return res.status(400).json({ error: 'Correo o contraseña incorrectos.' });
     }
-
-    console.log("Usuario encontrado:", user);
 
     if (!user.verified) {
       return res.status(403).json({ error: 'Tu correo aún no ha sido verificado.' });
     }
 
     const passwordMatch = await bcrypt.compare(password, user.password);
-    console.log("¿Contraseña coincide?", passwordMatch);
-
     if (!passwordMatch) {
       return res.status(400).json({ error: 'Correo o contraseña incorrectos.' });
     }
 
-    return res.redirect('/home');
+    // Éxito: responder con JSON
+    return res.status(200).json({ redirectTo: '/home' });
 
   } catch (err) {
     console.error(err);
-    res.status(500).json({ error: 'Error interno del servidor.' });
+    return res.status(500).json({ error: 'Error interno del servidor.' });
   }
 };
 
 
 
+//Registrar usario
 export const register = async (req, res) => {
   try {
     const { email, password, confirmPassword } = req.body;
-
+  
     if (password.length < 8) {
       return res.status(400).json({ error: 'La contraseña debe tener al menos 8 caracteres.' });
     }
@@ -76,7 +73,7 @@ export const register = async (req, res) => {
     const verificationUrl = `http://localhost:3000/api/auth/verifyEmail?token=${verificationToken}`;
     await sendVerificationEmail(email, verificationUrl);
 
-    res.status(201).json({ message: 'Usuario registrado. Revisa tu correo para verificar.' });
+    res.status(201).json({ message: 'Te enviamos un correo para confirmar tu cuenta. Por favor, revisa tu bandeja de entrada.' });
 
   } catch (err) {
     console.error(err);
@@ -84,6 +81,7 @@ export const register = async (req, res) => {
   }
 };
 
+//Verificacion de Correo
 export const verifyEmail = async (req, res) => {
   try {
     const { token } = req.query;
@@ -105,6 +103,7 @@ export const verifyEmail = async (req, res) => {
   }
 };
 
+//Restablcer contraseña
 export const forgetPassword = async (req, res) => {
   const { email } = req.body;
 
@@ -129,11 +128,16 @@ export const forgetPassword = async (req, res) => {
   }
 };
 
-
+//Crear nueva contraseña
 export const resetPassword = async (req, res) => {
   const { token, password } = req.body;
 
   try {
+    // Validación de longitud mínima
+    if (!password || password.length < 8) {
+      return res.status(400).json({ message: 'La contraseña debe tener al menos 8 caracteres.' });
+    }
+
     // Busca usuario con token válido y no expirado
     const user = await User.findOne({
       forgetPasswordToken: token,

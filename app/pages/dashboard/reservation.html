@@ -1,0 +1,165 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservacion</title>
+    <link rel="stylesheet" href="/css/reservation.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="icon" href="/assets/icon.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <div class="layout-main">
+      <aside class="sidebar">
+        <div>
+          <div class="logo">
+            <img src="/assets/icon.png" alt="Residencia Dorada" />
+            <h1>SICPES</h1>
+          </div>
+          <ul class="nav-menu">
+            <li class="nav-item active">
+              <a href="/home" class="nav-link"
+                ><i class="fas fa-home"></i> Inicio</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="/reservation" class="nav-link"
+                ><i class="fas fa-file-invoice-dollar"></i>Reservacion</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#" class="nav-link"
+                ><i class="fas fa-file-invoice-dollar"></i> Pagos</a
+              >
+            </li>
+          </ul>
+        </div>
+        <div class="user-profile">
+          <button class="logout-btn">
+            <i class="fas fa-sign-out-alt"></i>
+            Cerrar sesión
+          </button>
+        </div>
+      </aside>
+      <div class="reserva-flex">
+        <div class="galeria-principal">
+          <img
+            id="foto-principal"
+            src="/assets/edificio.webp"
+            alt="Foto principal"
+          />
+          <div class="miniaturas">
+            <img
+              src="/assets/edificio.webp"
+              alt="Edificio"
+              onclick="cambiarFoto(this)"
+            />
+            <img
+              src="/assets/interior.webp"
+              alt="Interior 1"
+              onclick="cambiarFoto(this)"
+            />
+            <img
+              src="/assets/interior2.webp"
+              alt="Interior 2"
+              onclick="cambiarFoto(this)"
+            />
+            <img
+              src="/assets/interior3.webp"
+              alt="Interior 3"
+              onclick="cambiarFoto(this)"
+            />
+            <img
+              src="/assets/interior4.webp"
+              alt="Interior 4"
+              onclick="cambiarFoto(this)"
+            />
+            <img
+              src="/assets/interior5.webp"
+              alt="Interior 5"
+              onclick="cambiarFoto(this)"
+            />
+            <img
+              src="/assets/interior6.webp"
+              alt="Interior 6"
+              onclick="cambiarFoto(this)"
+            />
+            <img
+              src="/assets/patio.webp"
+              alt="Patio"
+              onclick="cambiarFoto(this)"
+            />
+          </div>
+          <!-- Bloque de información de la propiedad -->
+          <div class="info-propiedad">
+            <div class="info-item">
+              <div class="info-precio">$7,000</div>
+              <div class="info-label">En Renta</div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-bed"></i>
+              <div class="info-label">3 recámaras</div>
+            </div>
+            <div class="info-item">
+              <i class="fas fa-bath"></i>
+              <div class="info-label">2 baños</div>
+            </div>
+          </div>
+        </div>
+        <section class="form-reserva">
+          <h2>Reservar Habitación</h2>
+          <form id="formReserva" method="POST" action="/api/reservas">
+            <label for="nombreCompleto">Nombre completo:</label>
+            <div class="input-group">
+              <i class="fas fa-user"></i>
+              <input
+                type="text"
+                id="nombreCompleto"
+                name="nombreCompleto"
+                placeholder="Nombre"
+                required
+              />
+            </div>
+            <label for="piso">Piso:</label>
+            <div class="input-group">
+              <i class="fas fa-building"></i>
+              <select id="piso" name="piso" required>
+                <option value="" disabled selected>Selecciona un piso</option>
+                <option value="1">Primer piso</option>
+                <option value="2">Segundo piso</option>
+              </select>
+            </div>
+            <label for="tipoCuarto">Tipo de habitación:</label>
+            <div class="input-group">
+              <i class="fas fa-bed"></i>
+              <select id="tipoCuarto" name="tipoCuarto" required>
+                <option value="" disabled selected>Selecciona una opción</option>
+                <option value="privado">Privado</option>
+                <option value="compartido">Compartido</option>
+              </select>
+            </div>
+            <label for="fechaIngreso">Fecha de ingreso:</label>
+            <div class="input-group">
+              <i class="fas fa-calendar-alt"></i>
+              <input type="date" id="fechaIngreso" name="fechaIngreso" required />
+            </div>
+
+            <label for="fechaSalida">Fecha de salida:</label>
+            <div class="input-group">
+              <i class="fas fa-calendar-alt"></i>
+              <input type="date" id="fechaSalida" name="fechaSalida" required />
+            </div>
+
+            <button type="submit">Reservar ahora</button>
+          </form>
+          <p id="mensaje"></p>
+        </section>
+      </div>
+    </div>
+    <script src="/js/dashboard/reservations.js"></script>
+  </body>
+</html>

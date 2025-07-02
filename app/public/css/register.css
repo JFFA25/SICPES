@@ -148,3 +148,10 @@ body {
 .register-btn:hover {
   transform: scale(1.05);
 }
+.error-input {
+  border: 2px solid red !important;
+}
+.input-success {
+  border: 2px solid #1db954 !important;
+  background-color: #eaffea;
+}

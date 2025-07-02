@@ -16,7 +16,13 @@
         <h2>Iniciar sesión</h2>
         <p>Accede a tu cuenta</p>
       </div>
-      <form action="/api/auth/login" method="POST" class="login-form">
+      <form
+        id="loginForm"
+        action="/api/auth/login"
+        method="POST"
+        class="login-form"
+        novalidate
+      >
         <div class="form-group">
           <label for="correo">Correo</label>
           <input
@@ -25,8 +31,8 @@
             name="email"
             required
             placeholder="Ingresa tu correo electrónico"
-            required 
           />
+          <div class="error-message" id="emailError"></div>
         </div>
         <div class="form-group">
           <label for="contrasena">Contraseña</label>
@@ -36,8 +42,9 @@
             name="password"
             required
             placeholder="Ingresa tu contraseña"
-            required 
+            autocomplete="current-password"
           />
+          <div class="error-message" id="passwordError"></div>
         </div>
         <button type="submit" class="login-btn">Entrar</button>
         <div class="login-links">
@@ -47,4 +54,5 @@
       </form>
     </div>
   </body>
+  <script src="/js/auth/login.js"></script>
 </html>

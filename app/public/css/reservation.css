@@ -1,0 +1,393 @@
+/* Galería de imágenes */
+.galeria-reserva {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 120px 120px;
+  gap: 12px;
+  width: 350px;
+  min-width: 220px;
+  max-width: 400px;
+}
+
+.galeria-reserva img:first-child {
+  grid-column: 1 / span 2;
+  grid-row: 1 / span 2;
+  height: 250px;
+  object-fit: cover;
+}
+
+.galeria-reserva img {
+  width: 100%;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  background: #f4f4f4;
+  transition: transform 0.2s, box-shadow 0.2s;
+}
+
+.galeria-reserva img:not(:first-child) {
+  height: 120px;
+}
+
+.galeria-reserva img:hover {
+  transform: scale(1.05);
+  box-shadow: 0 4px 24px rgba(0,0,0,0.18);
+  z-index: 2;
+}
+
+/* Formulario de reservación */
+.form-reserva {
+  flex: 1;
+  min-width: 320px;
+  max-width: 440px;
+  background: rgba(255,255,255,0.95);
+  padding: 38px 36px 32px 36px;
+  border-radius: 18px;
+  box-shadow: 0 8px 32px rgba(30,40,60,0.13), 0 1.5px 8px rgba(0,0,0,0.07);
+  position: relative;
+  transition: box-shadow 0.3s;
+}
+
+.form-reserva {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(30,40,60,0.10), 0 1.5px 8px rgba(0,0,0,0.05);
+  padding: 22px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 290px;
+  max-width: 370px;
+  min-height: 420px;
+  justify-content: flex-start;
+}
+
+.form-reserva h2 {
+  text-align: center;
+  color: #009e60;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.form-reserva .input-group {
+  width: 100%;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.form-reserva .input-group i {
+  position: absolute;
+  left: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00b15d;
+  font-size: 1.3em;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.form-reserva input,
+.form-reserva select {
+  width: 100%;
+  padding: 12px 12px 12px 44px; /* Más espacio a la izquierda para el icono */
+  border: 1.5px solid #cfd8dc;
+  border-radius: 8px;
+  font-size: 1.15em;
+  background: #f9fafb;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.form-reserva label {
+  margin-bottom: 6px;
+  margin-top: 0;
+  font-size: 1.1em;
+}
+
+.form-reserva button {
+  width: 100%;
+  margin-top: 18px;
+  padding: 13px 0;
+  background: linear-gradient(90deg, #00b15d 60%, #00d16d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 1.15em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #00b15d22;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.form-reserva button:hover {
+  background: linear-gradient(90deg, #00d16d 60%, #00b15d 100%);
+  box-shadow: 0 4px 16px #00b15d33;
+}
+
+#mensaje {
+  text-align: center;
+  margin-top: 18px;
+  color: #009e60;
+  font-weight: bold;
+  font-size: 1.08em;
+  letter-spacing: 0.2px;
+}
+
+/* Flex container for reservation section */
+.reserva-flex {
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  gap: 28px;
+  margin: 32px auto;
+  max-width: 1000px;
+  padding: 0 1vw;
+  min-height: 520px;
+}
+
+.galeria-principal,
+.form-reserva {
+  background: #fff;
+  border-radius: 14px;
+  box-shadow: 0 4px 18px rgba(30,40,60,0.10), 0 1.5px 8px rgba(0,0,0,0.05);
+  padding: 22px 16px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex: 1 1 0;
+  min-width: 290px;
+  max-width: 370px;
+  min-height: 420px;
+  justify-content: flex-start;
+}
+
+.galeria-principal {
+  justify-content: flex-start;
+}
+
+.form-reserva {
+  justify-content: center;
+}
+
+#foto-principal {
+  width: 100%;
+  height: 210px;
+  object-fit: cover;
+  border-radius: 10px;
+  box-shadow: 0 2px 12px rgba(0,0,0,0.10);
+  margin-bottom: 12px;
+  background: #f4f4f4;
+}
+
+.miniaturas {
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin-bottom: 12px;
+}
+
+.miniaturas img {
+  width: 48px;
+  height: 42px;
+  object-fit: cover;
+  border-radius: 6px;
+  cursor: pointer;
+  border: 2px solid transparent;
+  transition: border 0.2s, transform 0.2s;
+  background: #f4f4f4;
+}
+
+.miniaturas img.miniatura-activa {
+  border: 2px solid #00b15d;
+  transform: scale(1.07);
+}
+
+.info-propiedad {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #f7f9fb;
+  border-radius: 8px;
+  box-shadow: 0 1px 6px #0001;
+  margin: 12px 0 18px 0;
+  padding: 12px 0;
+  gap: 0;
+  width: 100%;
+}
+
+.info-item {
+  flex: 1;
+  text-align: center;
+  border-right: 1px solid #e3e6ea;
+  padding: 0 4px;
+  color: #2d3a4a;
+  font-size: 1em;
+}
+
+.info-item:last-child {
+  border-right: none;
+}
+
+.info-precio {
+  font-size: 1.3em;
+  font-weight: bold;
+  color: #1a2330;
+}
+
+.info-label {
+  color: #7a8a99;
+  font-size: 1em;
+  margin-top: 2px;
+}
+
+.info-item i {
+  font-size: 1.3em;
+  color: #1a2330;
+  margin-bottom: 2px;
+  display: block;
+}
+
+/* Formulario */
+.form-reserva h2 {
+  text-align: center;
+  color: #009e60;
+  margin-bottom: 10px;
+  font-size: 1.3rem;
+  letter-spacing: 1px;
+  font-weight: 800;
+}
+
+.form-reserva .input-group {
+  width: 100%;
+  margin-bottom: 14px;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.form-reserva .input-group i {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  color: #00b15d;
+  font-size: 1.1em;
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+.form-reserva input,
+.form-reserva select {
+  width: 100%;
+  padding: 10px 10px 10px 38px;
+  border: 1.2px solid #cfd8dc;
+  border-radius: 7px;
+  font-size: 1em;
+  background: #f9fafb;
+  transition: border 0.2s, box-shadow 0.2s;
+  outline: none;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+.form-reserva label {
+  margin-bottom: 4px;
+  margin-top: 0;
+  font-size: 1em;
+}
+
+.form-reserva button {
+  width: 100%;
+  margin-top: 12px;
+  padding: 10px 0;
+  background: linear-gradient(90deg, #00b15d 60%, #00d16d 100%);
+  color: #fff;
+  border: none;
+  border-radius: 7px;
+  font-size: 1.07em;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 2px 8px #00b15d22;
+  letter-spacing: 0.5px;
+  transition: background 0.2s, box-shadow 0.2s;
+}
+
+.form-reserva button:hover {
+  background: linear-gradient(90deg, #00d16d 60%, #00b15d 100%);
+  box-shadow: 0 4px 16px #00b15d33;
+}
+
+#mensaje {
+  text-align: center;
+  margin-top: 12px;
+  color: #009e60;
+  font-weight: bold;
+  font-size: 1em;
+  letter-spacing: 0.2px;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .reserva-flex {
+    flex-direction: column;
+    align-items: center;
+    gap: 18px;
+  }
+  .galeria-principal,
+  .form-reserva {
+    min-width: 90vw;
+    max-width: 98vw;
+    min-height: unset;
+  }
+}
+.layout-main {
+  display: flex;
+  min-height: 100vh;
+  background: #f6f8fa;
+}
+
+.sidebar {
+  width: 260px;
+  min-width: 220px;
+  background: #00b15d;
+  color: #fff;
+  min-height: 100vh;
+  padding: 0;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  z-index: 2;
+}
+
+.reserva-flex {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 0;
+  background: #f6f8fa;
+}
+.layout-main {
+  display: flex;
+  min-height: 100vh;
+  background: #f6f8fa;
+}
+
+.reserva-flex {
+  flex: 1;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  padding: 40px 0;
+  background: #f6f8fa;
+}

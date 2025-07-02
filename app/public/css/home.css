@@ -99,46 +99,6 @@ body {
   text-align: center;
 }
 
-.user-profile {
-  padding: 1rem 0;
-  border-top: 1px solid rgba(255, 255, 255, 0.1);
-  margin-top: auto;
-}
-
-.user-info {
-  display: flex;
-  align-items: center;
-  margin-bottom: 1rem;
-}
-
-.user-avatar {
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: white;
-  margin-right: 0.75rem;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--primary);
-  font-weight: bold;
-}
-
-.user-details {
-  display: flex;
-  flex-direction: column;
-}
-
-.user-name {
-  font-weight: 500;
-  font-size: 0.9rem;
-}
-
-.user-role {
-  font-size: 0.75rem;
-  opacity: 0.8;
-}
-
 .logout-btn {
   display: flex;
   align-items: center;
@@ -189,4 +149,9 @@ body {
 .search-bar i {
   color: var(--primary);
   margin-right: 0.5rem;
+}
+.main-content {
+  padding: 30px;
+  background-color: #f9f9f9;
+  flex-grow: 1;
 }

@@ -147,3 +147,12 @@ body {
   animation: slideInLeft 1s ease-out both;
   animation-delay: 0.3s;
 }
+.error-message {
+  color: #d00;
+  font-size: 0.95em;
+  margin-top: 2px;
+  margin-bottom: 6px;
+}
+.input-error {
+  border: 1.5px solid #d00 !important;
+}
