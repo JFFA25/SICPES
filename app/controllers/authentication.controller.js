@@ -42,7 +42,11 @@ export const login = async (req, res) => {
 export const register = async (req, res) => {
   try {
     const { email, password, confirmPassword } = req.body;
-  
+    
+    if (!email || !password || !confirmPassword) {
+      return res.status(400).json({ error: 'Todos los campos deben de ser completados.' });
+    }
+
     if (password.length < 8) {
       return res.status(400).json({ error: 'La contraseña debe tener al menos 8 caracteres.' });
     }
@@ -55,6 +59,7 @@ export const register = async (req, res) => {
     if (userExists) {
       return res.status(400).json({ error: 'El correo ya está registrado.' });
     }
+
 
     // Hashear la contraseña
     const hashedPassword = await bcrypt.hash(password, 10);

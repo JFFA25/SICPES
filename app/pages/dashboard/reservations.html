@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Reservación de Cuarto</title>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/reservation.css" />
+    <link rel="icon" href="/assets/icon.png" type="image/x-icon" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- Navbar -->
+    <header class="navbar">
+      <div class="navbar-left">
+        <img src="/assets/icon.png" alt="Residencia Dorada" class="logo" />
+        <h1 class="title">SICPES</h1>
+      </div>
+      <nav class="navbar-menu">
+        <a href="/home" class="nav-link"> <i class="fas fa-home"></i>Inicio </a>
+      </nav>
+      <nav class="navbar-menu">
+        <a href="/reservations" class="nav-link active">
+          <i class="fas fa-bed"></i>Reservaciones
+        </a>
+      </nav>
+      <nav class="navbar-menu">
+        <a href="/payments" class="nav-link">
+          <i class="fas fa-credit-card"></i>Pagos
+        </a>
+      </nav>
+      <div class="navbar-right">
+        <button class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+        </button>
+      </div>
+    </header>
+
+    <main class="main-content">
+      <section class="bienvenida">
+        <h2>Formulario de Reserva de Cuarto</h2>
+        <p>
+          Completa el formulario para reservar tu espacio en la residencia
+          estudiantil.
+        </p>
+      </section>
+      <section class="form-reserva">
+        <form
+          class="formulario-reserva"
+          id="formReserva"
+          method="POST"
+          action="/api/dashboard/reservation"
+        >
+          <!-- Información Personal -->
+          <fieldset class="form-section">
+            <legend>
+              <i class="fas fa-user-circle"></i> Información Personal
+            </legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="nombreCompleto">Nombre Completo *</label>
+                <input
+                  type="text"
+                  id="nombreCompleto"
+                  name="nombreCompleto"
+                  placeholder="Nombre"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="telefono">Teléfono *</label>
+                <input
+                  type="tel"
+                  id="telefono"
+                  name="telefono"
+                  placeholder="Telefono"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="universidad">Universidad *</label>
+                <select id="universidad" name="universidad" required>
+                  <option value="" disabled selected>
+                    Selecciona tu universidad
+                  </option>
+                  <option value="utxj">UTXJ</option>
+                  <option value="iedep">IEDEP</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+
+          <!-- Detalles de la Reserva -->
+          <fieldset class="form-section">
+            <legend>
+              <i class="fas fa-calendar-alt"></i> Detalles de la Reserva
+            </legend>
+            <div class="form-row">
+              <div class="form-group">
+                <label for="fechaIngreso">Fecha de Ingreso *</label>
+                <input
+                  type="date"
+                  id="fechaIngreso"
+                  name="fechaIngreso"
+                  required
+                />
+              </div>
+              <div class="form-group">
+                <label for="fechaSalida">Fecha de Salida *</label>
+                <input
+                  type="date"
+                  id="fechaSalida"
+                  name="fechaSalida"
+                  required
+                />
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Tipo de Habitación *</label>
+              <div class="room-options">
+                <label class="room-card">
+                  <input
+                    type="radio"
+                    name="tipoCuarto"
+                    value="individual"
+                    required
+                  />
+                  <div>
+                    <i class="fas fa-user fa-2x"></i>
+                    <div>
+                      Individual<br /><span class="room-desc"
+                        >Solo para ti</span
+                      >
+                    </div>
+                  </div>
+                </label>
+                <label class="room-card">
+                  <input
+                    type="radio"
+                    name="tipoCuarto"
+                    value="compartida"
+                    required
+                  />
+                  <div>
+                    <i class="fas fa-users fa-2x"></i>
+                    <div>
+                      Compartida<br /><span class="room-desc"
+                        >2 estudiantes</span
+                      >
+                    </div>
+                  </div>
+                </label>
+                <label class="room-card">
+                  <input
+                    type="radio"
+                    name="tipoCuarto"
+                    value="dormitorio"
+                    required
+                  />
+                  <div>
+                    <i class="fas fa-users fa-2x"></i>
+                    <div>
+                      Dormitorio<br /><span class="room-desc"
+                        >4-6 estudiantes</span
+                      >
+                    </div>
+                  </div>
+                </label>
+              </div>
+            </div>
+            <!-- Selección de piso y habitación -->
+            <div class="form-row">
+              <div class="form-group">
+                <label for="piso">Piso *</label>
+                <select id="piso" name="piso" required>
+                  <option value="" disabled selected>Selecciona un piso</option>
+                  <option value="1">Piso 1</option>
+                  <option value="2">Piso 2</option>
+                  <option value="3">Piso 3</option>
+                  <option value="4">Piso 4</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="habitacion">Habitación *</label>
+                <select id="habitacion" name="habitacion" required>
+                  <option value="" disabled selected>
+                    Selecciona una habitación
+                  </option>
+                  <option value="1">Habitación 105</option>
+                  <option value="2">Habitación 120</option>
+                  <option value="3">Habitación 125</option>
+                  <option value="4">Habitación 140</option>
+                </select>
+              </div>
+            </div>
+          </fieldset>
+          <button type="submit" class="btn btn-principal">Reservar</button>
+        </form>
+        <div id="mensaje"></div>
+      </section>
+    </main>
+  </body>
+  <script src="/js/dashboard/reservation.js"></script>
+</html>

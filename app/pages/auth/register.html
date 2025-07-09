@@ -10,11 +10,15 @@
   <body>
     <div class="register-box">
       <div class="register-header">
-        <a href="/"
-          ><img src="/assets/icon.ico" alt="Logo" class="register-logo"
-        /></a>
-        <h2>Crear cuenta</h2>
-        <p>Regístrate para acceder al sistema</p>
+        <!-- Icono clickeable que regresa al inicio -->
+        <a href="/">
+          <img
+            src="/assets/icon.ico"
+            alt="Logo de la empresa"
+            class="logo-home"
+          />
+        </a>
+        <h3>Crear tu cuenta</h3>
       </div>
       <form
         action="api/auth/register"
@@ -28,7 +32,7 @@
             type="email"
             id="email"
             name="email"
-            placeholder="Ingresa tu correo electrónico"          
+            placeholder="Ingresa tu correo electrónico"
           />
         </div>
         <div class="form-group">
@@ -55,6 +59,6 @@
         </div>
       </form>
     </div>
+    <script src="/js/auth/register.js"></script>
   </body>
-  <script src="/js/auth/register.js"></script>
 </html>

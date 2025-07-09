@@ -4,6 +4,7 @@ import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
 import usersRoutes from "./routes/usersRoutes.js";
+import reservationRoutes from "./routes/reservationRoutes.js";
 import connectDB from "./db/db.js";
 
 const app = express();
@@ -19,6 +20,8 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/auth", usersRoutes);
+app.use("/api/dashboard", reservationRoutes);
+
 
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "pages/index.html"))
@@ -41,13 +44,14 @@ app.get("/home", (req, res) =>
 app.get("/forgetPassword", (req, res) =>
   res.sendFile(path.join(__dirname, "pages/auth/forgetPassword.html"))
 );
-
 app.get("/resetPassword", (req, res) =>
   res.sendFile(path.join(__dirname, "pages/auth/resetPassword.html"))
 );
-app.get("/reservation", (req, res) =>
-  res.sendFile(path.join(__dirname, "pages/dashboard/reservation.html"))
+app.get("/reservations", (req, res) =>
+  res.sendFile(path.join(__dirname, "pages/dashboard/reservations.html"))
 );
+
+
 
 app.listen(PORT, () => {
   console.log(`Servidor corriendo en: http://localhost:${PORT}`);

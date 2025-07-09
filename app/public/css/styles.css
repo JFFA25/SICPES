@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #00b15d;
+  background-color: #00a24a; /* Verde principal */
   color: white;
 }
 
@@ -22,33 +22,33 @@ body {
 .logo {
   font-size: 1.2rem;
   font-weight: bold;
-  color: #007c3f;
+  color: #00a24a;
 }
 
 .navbar nav a {
   margin-left: 20px;
   text-decoration: none;
-  color: #007c3f;
+  color: #00a24a;
   font-weight: 500;
   transition: color 0.3s;
 }
 
 .navbar nav a:hover {
-  color: #00a859;
+  color: #037036; /* Turquesa brillante */
 }
 
-
 .btn-login {
-  border: 1px solid #00a859;
+  border: 1px solid #00a24a;
   padding: 6px 12px;
   border-radius: 5px;
-  color: #00a859;
+  color: #00a24a;
   font-weight: 500;
+  background-color: transparent;
   transition: all 0.3s;
 }
 
 .btn-login:hover {
-  background-color: #00a859;
+  background-color: #00a24a;
   color: white !important;
 }
 
@@ -69,22 +69,30 @@ body {
 .hero h1 {
   font-size: 2.5rem;
   margin-bottom: 20px;
+  color:white; /* Verde claro suave para contraste */
 }
 
 .hero p {
   font-size: 1.1rem;
   margin-bottom: 30px;
   line-height: 1.5;
+  color: white;
 }
 
 .btn-principal {
-  background-color: white;
-  color: #00a859;
+  background-color: #00a24a;
+  color: white;
   padding: 12px 25px;
   text-decoration: none;
   font-weight: bold;
   border-radius: 5px;
   cursor: pointer;
+  border: none;
+  transition: background-color 0.3s;
+}
+
+.btn-principal:hover {
+  background-color: #008b3d;
 }
 
 .imagen {
@@ -129,6 +137,7 @@ body {
     margin: 5px 10px 0 0;
   }
 }
+
 @keyframes slideInLeft {
   from {
     opacity: 0;
@@ -139,6 +148,7 @@ body {
     transform: translateX(0);
   }
 }
+
 .hero .texto {
   animation: slideInLeft 1s ease-out both;
 }
@@ -147,12 +157,14 @@ body {
   animation: slideInLeft 1s ease-out both;
   animation-delay: 0.3s;
 }
+
 .error-message {
-  color: #d00;
+  color: #f87171; /* Rojo claro para errores */
   font-size: 0.95em;
   margin-top: 2px;
   margin-bottom: 6px;
 }
+
 .input-error {
-  border: 1.5px solid #d00 !important;
+  border: 1.5px solid #f87171 !important;
 }

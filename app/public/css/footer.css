@@ -1,5 +1,5 @@
 .footer {
-  background-color: #007a3d;
+  background-color: #007c3f; /* Verde oscuro elegante */
   color: white;
   padding: 15px 10px;
   text-align: center;
@@ -21,7 +21,7 @@
 }
 
 .footer-links a {
-  color: #d3fddf;
+  color: #b9fbc0; /* Verde menta muy claro */
   margin: 0 8px;
   text-decoration: none;
   font-size: 0.85rem; 
@@ -29,9 +29,10 @@
 
 .footer-links a:hover {
   text-decoration: underline;
+  color: #d1ffe6;
 }
 
 .footer-copy {
   font-size: 0.75rem; 
-  color: #b5f3c9;
+  color: #a7eeb4;
 }
