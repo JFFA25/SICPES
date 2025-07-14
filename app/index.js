@@ -50,6 +50,9 @@ app.get("/resetPassword", (req, res) =>
 app.get("/reservations", (req, res) =>
   res.sendFile(path.join(__dirname, "pages/dashboard/reservations.html"))
 );
+app.get("/payments", (req, res) =>
+  res.sendFile(path.join(__dirname, "pages/dashboard/payments.html"))
+);
 
 
 

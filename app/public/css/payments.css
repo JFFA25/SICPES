@@ -1,0 +1,152 @@
+/* -- payments.css -- */
+
+/* Estilos para el botón principal (btn-principal) */
+.btn-principal {
+    /* Degradado de fondo */
+    background:  #1db954; /* Un degradado azul-violeta a rosa */
+    color: white; /* Texto blanco para que contraste */
+    padding: 12px 28px; /* Un poco más de padding para que se vea cómodo */
+    border: none; /* Quitamos el borde sólido por defecto */
+    border-radius: 8px; /* Bordes más redondeados para un look suave */
+    cursor: pointer;
+    font-size: 1.1em; /* Un poco más grande para destacar */
+    font-weight: 600; /* Texto seminegrita */
+    margin-top: 25px; /* Espacio superior */
+    transition: all 0.3s ease; /* Transición suave para hover y disabled */
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); /* Sombra para efecto de elevación */
+    display: inline-block; /* Para que la sombra se ajuste bien */
+    text-align: center;
+    text-decoration: none; /* Asegurar que no haya subrayado si se usa en un <a> */
+}
+
+.btn-principal:hover {
+    /* Efecto al pasar el mouse: ligeramente más oscuro y un poco más de elevación */
+    background: #03782c ; /* Degradado un poco más oscuro */
+    box-shadow: 0 6px 15px rgba(0, 0, 0, 0.25); /* Sombra más pronunciada */
+    transform: translateY(-3px); /* Se levanta un poco */
+}
+
+.btn-principal:disabled {
+    /* Estilo para el botón deshabilitado */
+    background: #e0e0e0; /* Fondo gris claro */
+    color: #a0a0a0; /* Texto gris más oscuro */
+    cursor: not-allowed;
+    box-shadow: none; /* Sin sombra cuando está deshabilitado */
+    transform: none; /* Sin efecto de levantamiento */
+}
+
+/* -- Otros estilos que tenías o que podrías añadir a payments.css -- */
+
+.bienvenida {
+    text-align: center;
+    padding: 30px 20px;
+    border-bottom: 1px solid #eee;
+    margin-bottom: 30px;
+}
+
+.bienvenida h2 {
+    color: #333;
+    margin-bottom: 10px;
+    font-size: 2em;
+}
+
+.bienvenida p {
+    color: #666;
+    font-size: 1.1em;
+}
+
+.payment-summary { /* Antes payment-section, ajusta si moviste el nombre */
+    display: grid;
+    gap: 20px;
+    grid-template-columns: 1fr;
+    padding: 0 20px;
+    max-width: 900px;
+    margin: 0 auto 40px auto;
+}
+
+@media (min-width: 768px) {
+    .payment-summary {
+        grid-template-columns: 1fr 1.2fr;
+    }
+}
+
+.card {
+    background-color: #fff;
+    padding: 25px;
+    border-radius: 8px;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    transition: transform 0.2s ease-in-out;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+}
+
+.card h3 {
+    color: #333;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 10px;
+    font-weight: 600;
+}
+
+.card p {
+    margin-bottom: 8px;
+    line-height: 1.5;
+    color: #444;
+    font-size: 0.95em;
+}
+
+.card p span {
+    font-weight: 700;
+    color: #222;
+}
+
+.message-text {
+    margin-top: 15px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.9em;
+}
+
+#no-payment-info { /* Antes no-payment-message */
+    background-color: #fefce8;
+    color: #856404;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ffeeba;
+    font-size: 0.95em;
+}
+
+.payment-history-list {
+    max-height: 300px;
+    overflow-y: auto;
+    padding-right: 5px;
+}
+
+#history-list {
+    list-style: none;
+    padding: 0;
+}
+
+#history-list li {
+    background-color: #f8f8f8;
+    margin-bottom: 6px;
+    padding: 12px;
+    border-radius: 6px;
+    font-size: 0.9em;
+    color: #555;
+    transition: background-color 0.2s ease;
+}
+
+#history-list li:hover {
+     background-color: #f0f0f0;
+}
+
+#history-list li:last-child {
+    margin-bottom: 0;
+}

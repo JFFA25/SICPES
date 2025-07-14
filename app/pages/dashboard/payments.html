@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Pagos</title>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="icon" href="/assets/icon.png" type="image/x-icon" />
+    <link rel="stylesheet" href="/css/payments.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <header class="navbar">
+      <div class="navbar-left">
+        <img src="/assets/icon.png" alt="Residencia Dorada" class="logo" />
+        <h1 class="title">SICPES</h1>
+      </div>
+      <nav class="navbar-menu">
+        <a href="/home" class="nav-link"> <i class="fas fa-home"></i>Inicio </a>
+      </nav>
+      <nav class="navbar-menu">
+        <a href="/reservations" class="nav-link">
+          <i class="fas fa-bed"></i>Reservaciones
+        </a>
+      </nav>
+      <nav class="navbar-menu">
+        <a href="/payments" class="nav-link active">
+          <i class="fas fa-credit-card"></i>Pagos
+        </a>
+      </nav>
+      <div class="navbar-right">
+        <button class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+        </button>
+      </div>
+    </header>
+    <main class="main-content">
+      <section class="bienvenida">
+        <h2>Gestión de Pagos</h2>
+        <p>
+          Aquí puedes ver tus pagos pendientes y el historial de transacciones.
+        </p>
+      </section>
+      <section class="payment-summary">
+        <div class="card payment-card">
+          <h3>Tu Próximo Pago</h3>
+          <div id="payment-details">
+            <p>Monto Pendiente: <span id="pending-amount">--</span></p>
+            <p>Fecha de Vencimiento: <span id="due-date">--/--/----</span></p>
+            <p>Estado: <span id="payment-status">Pendiente</span></p>
+            <button id="pay-button" class="btn btn-principal">
+              Realizar Pago
+            </button>
+            <p id="payment-message" style="color: red; margin-top: 10px"></p>
+          </div>
+          <div id="no-payment-info" style="display: none">
+            <p>
+              No tienes pagos pendientes en este momento o no se encontró
+              información de tu reserva.
+            </p>
+          </div>
+          <div id="no-payment-info" style="display: none">
+            <p>
+              No tienes pagos pendientes en este momento o no se encontró
+              información de tu reserva.
+            </p>
+          </div>
+        </div>
+
+        <div class="card payment-history-card">
+          <h3>Historial de Pagos</h3>
+          <div class="payment-history-list">
+            <p>Aquí se mostrará tu historial de pagos.</p>
+            <ul id="history-list"></ul>
+          </div>
+        </div>
+      </section>
+    </main>
+    <script src="/js/dashboard/payments.js"></script>
+  </body>
+</html>

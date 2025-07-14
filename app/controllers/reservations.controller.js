@@ -1,4 +1,5 @@
 import Reservation from '../models/reservations.js';
+
 export const createReservation = async (req, res) => {
   try {
     const {
@@ -9,7 +10,9 @@ export const createReservation = async (req, res) => {
       fechaSalida,
       tipoCuarto,
       piso,
-      habitacion
+      habitacion,
+      monto,
+      fechaVencimiento
     } = req.body;
 
     const nuevaReserva = new Reservation({
@@ -20,7 +23,9 @@ export const createReservation = async (req, res) => {
       fechaSalida,
       tipoCuarto,
       piso,
-      habitacion
+      habitacion,
+      monto,
+      fechaVencimiento
     });
 
     await nuevaReserva.save();
@@ -29,5 +34,15 @@ export const createReservation = async (req, res) => {
   } catch (error) {
     console.error('Error al crear la reservación:', error); // <--- este es el importante
     res.status(500).json({ message: 'Error al crear la reservación', error });
+  }
+};
+
+export const getReservation = async (req, res) => {
+  try {
+    const reserva = await Reservation.findOne(); 
+    if (!reserva) return res.status(404).json({ message: "No hay reservación" });
+    res.json(reserva);
+  } catch (error) {
+    res.status(500).json({ message: "Error al obtener la reservación" });
   }
 };

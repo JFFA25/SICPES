@@ -1,77 +1,221 @@
-body, .main-content, .bienvenida, .resumen-usuario, .card, .btn, footer {
+/* -- home.css -- */
+
+/* Estilos Generales y Tipografía */
+body {
+    font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif; /* Fuente legible y moderna */
+    background-color: #f9f9f9; /* Fondo muy claro, casi blanco, para una base limpia */
+    color: #333; /* Color de texto base, un gris oscuro suave */
+    /* Animación de entrada eliminada */
+    opacity: 1; /* Asegura que el body sea visible por defecto */ /* Asegura que no haya transformaciones residuales */
+}
+
+/* El resto de elementos seguirán la fuente del body por defecto */
+.main-content, .bienvenida, .resumen-usuario, .card, .btn, footer {
   font-family: 'Segoe UI', 'Roboto', 'Arial', sans-serif;
 }
 
+/* Contenido Principal */
 .main-content {
-  max-width: 900px;
-  margin: 40px auto;
-  padding: 0 16px;
+  max-width: 960px; /* Ligeramente más ancho para mayor espacio */
+  margin: 50px auto; /* Más margen superior e inferior */
+  padding: 0 20px; /* Un poco más de padding horizontal */
 }
 
+/* Sección de Bienvenida */
 .bienvenida {
   text-align: center;
-  margin-bottom: 32px;
+  margin-bottom: 40px; /* Más espacio debajo del encabezado */
+  color: #2c3e50; /* Un gris azulado oscuro para el título principal, más sofisticado */
 }
 
+.bienvenida h2 {
+    font-size: 2.2em; /* Título principal más prominente */
+    margin-bottom: 10px;
+    font-weight: 600; /* Semi-negrita para un toque moderno */
+}
+
+.bienvenida p {
+    font-size: 1.1em;
+    color: #7f8c8d; /* Un gris medio para el texto secundario, suave y legible */
+}
+
+/* Contenedor de Resumen de Usuario (Grid) */
 .resumen-usuario {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-  gap: 24px;
-  margin-bottom: 32px;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 20px; /* Espacio más consistente entre elementos */
+  margin-bottom: 40px; /* Más espacio abajo */
 }
 
+/* Tarjetas (`.card`) */
 .card {
-  background: #fff;
-  border-radius: 8px;
-  padding: 16px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  transition: transform 0.2s;
+  background: #fff; /* Fondo blanco puro para las tarjetas */
+  border-radius: 10px; /* Bordes más suaves */
+  padding: 24px; /* Más espacio interno para un look limpio */
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08); /* Sombra sutil pero perceptible para dar profundidad */
+  transition: transform 0.2s ease-out; /* Transición más fluida */
 }
 
 .card:hover {
-  transform: translateY(-4px);
+  transform: translateY(-5px); /* Efecto de elevación sutil */
 }
 
-.card-header {
-  font-size: 1.25rem;
-  margin-bottom: 16px;
+.card h3 { /* Encabezados dentro de las tarjetas */
+  font-size: 1.35rem; /* Tamaño de título claro */
+  margin-bottom: 18px; /* Espacio debajo del título */
+  color: #34495e; /* Un gris oscuro para los títulos de las tarjetas, distinto del principal */
+  font-weight: 600; /* Semi-negrita */
+  border-bottom: 1px solid #eceff1; /* Borde muy sutil para separar (gris muy claro) */
+  padding-bottom: 10px;
 }
 
-.card-content {
-  font-size: 1rem;
-  color: #333;
+.card p { /* Párrafos dentro de las tarjetas */
+  font-size: 1em; /* Tamaño de fuente estándar */
+  color: #616161; /* Un gris un poco más oscuro para el contenido de las tarjetas */
+  line-height: 1.6; /* Espaciado entre líneas para mejor lectura */
+  margin-bottom: 8px; /* Espacio entre párrafos */
 }
+
+/* --- COLORES PARA EL ESTADO DEL PAGO (CONFIRMADOS Y CON ESPECIFICIDAD) --- */
+
+.card p .status-pendiente {
+    color: #f39c12; /* Naranja vibrante para pendiente */
+    font-weight: 600; /* Negrita para resaltar */
+}
+
+.card p .status-vencido {
+    color: #e74c3c; /* ROJO INTENSO para vencido */
+    font-weight: 600;
+}
+
+.card p .status-pagado {
+    color: #27ae60; /* Verde esmeralda para pagado */
+    font-weight: 600;
+}
+
+.card p .status-no-aplica,
+.card p .status-error {
+    color: #7f8c8d; /* Gris suave para estados no aplicables o errores */
+    font-weight: 500;
+}
+
+/* Asegúrate de que no haya una regla más general para '.card p span'
+   que anule estos colores. Si la hay, elimínala o ajústala.
+   Por ejemplo, si tenías:
+   .card p span {
+       color: #212121;
+       font-weight: 700;
+   }
+   Ahora solo podrías necesitar:
+   .card p span {
+       font-weight: 700;
+   }
+   porque el color ya lo manejan las clases de estado.
+*/
+
+.card p span { /* Span para valores importantes dentro de párrafos */
+    /* El color ahora lo manejan las clases de status, aquí solo el font-weight si aplica */
+    font-weight: 700; /* Mantiene la negrita para valores importantes */
+}
+
+.card-content strong {
+    color: #000; /* Datos importantes en negro puro (a menos que una clase de status lo cambie) */
+    font-weight: 700; /* Mayor énfasis */
+}
+
 
 .card-footer {
-  margin-top: 16px;
+  margin-top: 25px; /* Más espacio arriba del footer de la tarjeta */
   text-align: right;
 }
 
+/* Mensajes de información/alerta */
+.message-text {
+    margin-top: 15px;
+    font-weight: 600;
+    text-align: center;
+    font-size: 0.9em;
+    color: #c0392b; /* Color rojo para mensajes de error o advertencia */
+}
+
+/* Estilo para cuando no hay información de pago (si aplica en el home) */
+#no-payment-info {
+    background-color: #fefce8; /* Fondo amarillo muy claro */
+    color: #856404; /* Texto marrón-amarillento */
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ffeeba; /* Borde sutil amarillo */
+    font-size: 0.95em;
+}
+
+
+/* Botones (`.btn`) - Estilo Moderno y Minimalista (Degradado Verde) */
 .btn {
   display: inline-block;
-  padding: 10px 20px;
-  margin-top: 8px;
-  background-color: #007bff;
-  color: #fff;
-  text-align: center;
-  border-radius: 4px;
+  background: linear-gradient(135deg, #27ae60 0%, #2ecc71 100%);
+  color: #fff; /* Texto blanco puro para contraste */
+  padding: 12px 25px;
+  border: none;
+  border-radius: 6px;
+  cursor: pointer;
+  font-size: 1em;
+  font-weight: 500;
   text-decoration: none;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
 }
 
 .btn:hover {
-  background-color: #0056b3;
+  background: linear-gradient(135deg, #2ecc71 0%, #27ae60 100%);
+  box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
 }
 
+.btn:active {
+    transform: translateY(0);
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.btn:disabled {
+    background: #bdc3c7;
+    color: #ecf0f1;
+    cursor: not-allowed;
+    box-shadow: none;
+    transform: none;
+}
+
+/* Las reglas @keyframes para animaciones han sido eliminadas */
+
+
+/* Media Queries (Responsividad) */
 @media (max-width: 600px) {
   .main-content {
-    padding: 0 8px;
+    padding: 0 10px;
+  }
+
+  .bienvenida h2 {
+      font-size: 1.8em;
+  }
+
+  .resumen-usuario {
+    gap: 16px;
   }
 
   .card {
-    padding: 12px;
+    padding: 18px;
+  }
+
+  .card h3 {
+      font-size: 1.2em;
+      margin-bottom: 12px;
+  }
+
+  .card p {
+      font-size: 0.9em;
   }
 
   .btn {
-    padding: 8px 16px;
+    padding: 10px 20px;
+    font-size: 0.9em;
   }
 }

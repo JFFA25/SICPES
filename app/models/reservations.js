@@ -33,6 +33,13 @@ const reservationSchema = new mongoose.Schema({
   habitacion: {
     type: Number,
     required: true,
+  }, monto: {
+    type: Number,
+    required: true
+  },
+  fechaVencimiento: { // ¡Campo agregado!
+    type: Date,
+    required: true
   }
 }, {
   timestamps: true,

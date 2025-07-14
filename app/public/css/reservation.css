@@ -1,197 +1,280 @@
+/* -- Formulario de Reserva: Versión Sencilla y Minimalista -- */
+
+/* Contenedor principal del formulario */
 .formulario-reserva {
-  max-width: 800px;
-  margin: 0 auto;
-  background: #fff;
-  border-radius: 14px;
-  box-shadow: 0 2px 16px #0002;
-  padding: 36px 28px;
+    max-width: 760px; /* Tamaño un poco más estándar y compacto */
+    margin: 30px auto;
+    background: #ffffff;
+    border-radius: 10px; /* Menos redondeado */
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); /* Sombra más ligera */
+    padding: 30px; /* Padding uniforme */
+    border: 1px solid #f2f2f2; /* Borde muy sutil */
 }
 
+/* Sección del formulario */
 .form-section {
-  border: none;
-  margin-bottom: 28px;
-  padding: 0;
+    border: none;
+    margin-bottom: 25px;
+    padding: 0;
 }
 
+/* Leyenda/Título de cada sección */
 .form-section legend {
-  font-size: 1.15em;
-  font-weight: 600;
-  color: #009e60;
-  margin-bottom: 12px;
-  display: flex;
-  align-items: center;
-  gap: 8px;
+    font-size: 1.1em; /* Más pequeño para sencillez */
+    font-weight: 600;
+    color: #444; /* Un gris neutro oscuro */
+    margin-bottom: 15px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid #eee; /* Línea separadora ligera */
+    display: flex;
+    align-items: center;
+    gap: 8px;
 }
 
+/* Fila de grupos de formulario */
 .form-row {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-bottom: 16px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px; /* Espacio uniforme */
+    margin-bottom: 0;
 }
 
+/* Grupo de formulario individual (label + input) */
 .form-group {
-  flex: 1 1 220px;
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 14px;
+    flex: 1 1 200px; /* Ajuste para que se adapte mejor en varias columnas */
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 15px; /* Espacio debajo de cada grupo */
 }
 
 .form-group label {
-  font-weight: 500;
-  margin-bottom: 5px;
-  color: #009e60;
+    font-weight: 500;
+    margin-bottom: 6px;
+    color: #555; /* Gris un poco más claro para etiquetas */
+    font-size: 0.9em; /* Ligeramente más pequeño */
 }
 
+/* Estilo base para inputs, selects y textareas */
 .form-group input,
 .form-group select,
 .form-group textarea {
-  padding: 10px 12px;
-  border: 1px solid #b2dfdb;
-  border-radius: 6px;
-  font-size: 1em;
-  outline: none;
-  transition: border 0.2s;
-  background: #f6f8fa;
+    padding: 10px 12px;
+    border: 1px solid #ddd; /* Borde simple y claro */
+    border-radius: 5px; /* Bordes suaves */
+    font-size: 0.95em; /* Tamaño estándar */
+    outline: none;
+    transition: border-color 0.2s ease, box-shadow 0.2s ease; /* Transiciones más simples */
+    background: #fff; /* Fondo blanco */
+    color: #333;
 }
 
+/* Estado de foco para inputs, selects y textareas */
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
-  border: 1.5px solid #00b15d;
-  background: #e0f7ef;
+    border-color: #6ed07a; /* Verde suave al enfocar */
+    box-shadow: 0 0 0 2px rgba(110, 208, 122, 0.2); /* Sombra de enfoque sutil */
 }
 
-.room-options {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
+/* Opciones de habitaciones y pago (cards de radio) */
+.room-options,
+.pay-options {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px; /* Espacio uniforme entre cards */
+    margin-bottom: 20px;
 }
 
+.room-card,
+.pay-card {
+    background: #fcfcfc;
+    border: 1px solid #e5e5e5; /* Borde muy claro */
+    border-radius: 8px;
+    padding: 15px; /* Padding uniforme */
+    cursor: pointer;
+    transition: all 0.2s ease; /* Transición general */
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03); /* Sombra aún más sutil */
+}
+
+/* Esconder el radio button nativo visualmente */
+.room-card input[type="radio"],
+.pay-card input[type="radio"] {
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
+}
+
+/* Estilo al pasar el mouse sobre las cards de selección */
+.room-card:hover,
+.pay-card:hover {
+    border-color: #d0d0d0; /* Borde ligeramente más oscuro */
+    background: #f8f8f8; /* Fondo un poco gris */
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
+}
+
+/* Estilo de la CARD COMPLETA cuando el radio está SELECCIONADO */
+/* Usamos :has() para navegadores modernos o una clase con JS para compatibilidad */
+.room-card:has(input[type="radio"]:checked),
+.pay-card:has(input[type="radio"]:checked),
+.room-card.selected, /* Para compatibilidad si usas JS */
+.pay-card.selected { /* Para compatibilidad si usas JS */
+    border-color: #5cb85c; /* Verde de selección directo */
+    background: #e9f5e9; /* Fondo verde muy claro */
+    box-shadow: 0 3px 10px rgba(92, 184, 92, 0.2); /* Sombra de selección clara */
+}
+
+/* Estilos específicos para Room Card */
 .room-card {
-  background: #f8fafc;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 18px 14px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  min-width: 170px;
-  flex: 1 1 170px;
-  transition: border 0.2s, box-shadow 0.2s;
-  font-size: 1em;
-  gap: 10px;
-}
-
-.room-card input[type="radio"] {
-  margin-right: 10px;
-  accent-color: #00b15d;
-}
-
-.room-card:hover, .room-card input[type="radio"]:checked + div {
-  border: 2px solid #00b15d;
-  box-shadow: 0 2px 12px #00b15d22;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 150px;
+    flex: 1 1 150px;
 }
 
 .room-desc {
-  color: #888;
-  font-size: 0.95em;
+    color: #777;
+    font-size: 0.8em;
+    margin-bottom: 2px;
 }
 
 .room-price {
-  color: #009e60;
-  font-weight: bold;
-  font-size: 1.08em;
-  margin-top: 4px;
+    color: #4CAF50; /* Verde material */
+    font-weight: 600;
+    font-size: 1em;
+    margin-top: 2px;
 }
 
-.pay-options {
-  display: flex;
-  gap: 16px;
-  flex-wrap: wrap;
-}
-
+/* Estilos específicos para Pay Card */
 .pay-card {
-  background: #f8fafc;
-  border: 2px solid #e0e0e0;
-  border-radius: 10px;
-  padding: 14px 18px;
-  display: flex;
-  align-items: center;
-  cursor: pointer;
-  min-width: 120px;
-  font-size: 1em;
-  gap: 8px;
-  transition: border 0.2s, box-shadow 0.2s;
+    display: flex; /* Asegura que el ícono/texto se alineen horizontalmente */
+    align-items: center;
+    justify-content: center; /* Centra el contenido si solo hay un elemento */
+    min-width: 100px;
+    flex: 1 1 100px;
+    text-align: center; /* Centra el texto */
+    font-size: 0.9em;
 }
 
-.pay-card input[type="radio"] {
-  margin-right: 8px;
-  accent-color: #00b15d;
-}
 
-.pay-card:hover, .pay-card input[type="radio"]:checked + i {
-  border: 2px solid #00b15d;
-  box-shadow: 0 2px 12px #00b15d22;
-}
-
+/* Opciones de servicios (checkboxes) */
 .servicios-opciones {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 18px;
-  margin-bottom: 8px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 20px;
 }
 
 .servicios-opciones label {
-  display: flex;
-  align-items: center;
-  gap: 6px;
-  background: #f8fafc;
-  border: 1.5px solid #e0e0e0;
-  border-radius: 8px;
-  padding: 8px 14px;
-  cursor: pointer;
-  font-size: 1em;
-  transition: border 0.2s, box-shadow 0.2s;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: #fcfcfc;
+    border: 1px solid #e5e5e5;
+    border-radius: 8px;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 0.95em;
+    color: #444;
+    transition: all 0.2s ease;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.03);
 }
 
+/* Esconder el checkbox nativo visualmente */
 .servicios-opciones input[type="checkbox"] {
-  accent-color: #00b15d;
+    position: absolute;
+    opacity: 0;
+    pointer-events: none;
+    width: 0;
+    height: 0;
 }
 
-.servicios-opciones label:hover,
-.servicios-opciones input[type="checkbox"]:checked + i {
-  border: 1.5px solid #00b15d;
+.servicios-opciones label:hover {
+    border-color: #d0d0d0;
+    background: #f8f8f8;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.06);
 }
 
+/* Estilo del LABEL COMPLETO cuando el checkbox está SELECCIONADO */
+.servicios-opciones label:has(input[type="checkbox"]:checked),
+.servicios-opciones label.selected { /* Para compatibilidad si usas JS */
+    border-color: #5cb85c;
+    background: #e9f5e9;
+    box-shadow: 0 3px 10px rgba(92, 184, 92, 0.2);
+}
+
+
+/* Botón principal (Enviar formulario) */
 .btn-principal {
-  background: linear-gradient(90deg, #22d3ee 0%, #10b981 100%);
-  color: #fff;
-  padding: 14px 0;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  font-size: 1.1em;
-  cursor: pointer;
-  margin-top: 18px;
-  width: 100%;
-  transition: background 0.2s;
+    background: #4CAF50; /* Verde material simple */
+    color: #fff;
+    padding: 12px 0;
+    border: none;
+    border-radius: 8px;
+    font-weight: 600;
+    font-size: 1.05em;
+    cursor: pointer;
+    margin-top: 25px;
+    width: 100%;
+    transition: background 0.2s ease, box-shadow 0.2s ease, transform 0.1s ease;
+    box-shadow: 0 3px 10px rgba(76, 175, 80, 0.2); /* Sombra simple */
 }
 
 .btn-principal:hover {
-  background: linear-gradient(90deg, #10b981 0%, #22d3ee 100%);
+    background: #45a049; /* Verde ligeramente más oscuro al hover */
+    box-shadow: 0 5px 12px rgba(76, 175, 80, 0.3);
+    transform: translateY(-1px);
 }
 
-@media (max-width: 800px) {
-  .formulario-reserva {
-    padding: 18px 4vw;
-  }
-  .form-row {
-    flex-direction: column;
-    gap: 0;
-  }
-  .room-options, .pay-options {
-    flex-direction: column;
-    gap: 8px;
-  }
+.btn-principal:active {
+    transform: translateY(0);
+    box-shadow: 0 1px 5px rgba(76, 175, 80, 0.1);
+}
+
+/* Media Queries (Responsividad) */
+@media (max-width: 700px) { /* Ajustado para un diseño más simple */
+    .formulario-reserva {
+        padding: 20px;
+        margin: 20px auto;
+    }
+    .form-section legend {
+        font-size: 1em;
+        margin-bottom: 12px;
+    }
+    .form-row {
+        flex-direction: column;
+        gap: 0; /* Eliminar gap cuando se apilan */
+    }
+    .form-group {
+        margin-bottom: 12px;
+    }
+    .form-group label {
+        font-size: 0.85em;
+        margin-bottom: 4px;
+    }
+    .form-group input,
+    .form-group select,
+    .form-group textarea {
+        padding: 8px 10px;
+        font-size: 0.9em;
+    }
+    .room-options,
+    .pay-options,
+    .servicios-opciones {
+        flex-direction: column;
+        gap: 10px;
+        margin-bottom: 15px;
+    }
+    .room-card, .pay-card, .servicios-opciones label {
+        width: 100%;
+        min-width: unset;
+        padding: 12px;
+        font-size: 0.9em;
+    }
+    .btn-principal {
+        font-size: 0.95em;
+        padding: 10px 0;
+        margin-top: 20px;
+    }
 }
