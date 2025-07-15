@@ -149,4 +149,49 @@
 
 #history-list li:last-child {
     margin-bottom: 0;
+}/* Agrupa cada campo del formulario con espacio y alineación */
+#payment-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+#payment-form label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  font-size: 0.95em;
+}
+
+#payment-form input[type="text"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  color: #555;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
+}
+/* Agrupa cada campo del formulario con espacio y alineación */
+#payment-form .form-group {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 15px;
+}
+
+#payment-form label {
+  font-weight: 600;
+  color: #333;
+  margin-bottom: 6px;
+  font-size: 0.95em;
+}
+
+#payment-form input[type="text"] {
+  padding: 12px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 1em;
+  color: #555;
+  transition: border-color 0.3s ease, box-shadow 0.3s ease;
+  width: 100%;
 }

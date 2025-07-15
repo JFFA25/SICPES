@@ -5,6 +5,7 @@ import path from "path";
 import { fileURLToPath } from "url";
 import usersRoutes from "./routes/usersRoutes.js";
 import reservationRoutes from "./routes/reservationRoutes.js";
+import paymentRoutes from "./routes/paymentRoutes.js";
 import connectDB from "./db/db.js";
 
 const app = express();
@@ -21,7 +22,7 @@ app.use(express.static(path.join(__dirname, "public")));
 
 app.use("/api/auth", usersRoutes);
 app.use("/api/dashboard", reservationRoutes);
-
+app.use('/api/dashboard', paymentRoutes);
 
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "pages/index.html"))

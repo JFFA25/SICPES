@@ -1,83 +1,71 @@
 document.addEventListener('DOMContentLoaded', async () => {
-    try {
-        const res = await fetch('/api/dashboard/reservation');
-        if (!res.ok) {
-            throw new Error(`Error al obtener la reservación: ${res.status} ${res.statusText}`);
-        }
-        const data = await res.json();
+  try {
+    const res = await fetch('/api/dashboard/reservation');
+    if (!res.ok) return mostrarDatosVacios('No activa');
 
-        const reservationData = Array.isArray(data) ? data[0] : data;
+    const data = await res.json();
+    const reserva = Array.isArray(data) ? data[0] : data;
+    if (!reserva) return mostrarDatosVacios('No activa');
 
-        // Referencia al elemento <span> del estado de pago
-        const paymentStatusSpan = document.getElementById('payment-status');
-        let paymentStatusText = '--';
-        let paymentStatusClass = 'status-no-aplica'; // Clase por defecto
+    document.getElementById('piso-usuario').textContent = reserva.piso || '--';
+    document.getElementById('habitacion-usuario').textContent = reserva.habitacion || '--';
+    document.getElementById('estado-reservacion').textContent = reserva.tipoCuarto || '--';
+    document.getElementById('monto-pago').textContent = reserva.montoMensual
+      ? `$${parseFloat(reserva.montoMensual).toLocaleString('es-MX')}`
+      : '--';
 
-        if (reservationData) {
-            // ... (tu código para habitacion-usuario, piso-usuario, etc. se mantiene igual) ...
-            document.getElementById('habitacion-usuario').textContent = reservationData.habitacion || '--';
-            document.getElementById('piso-usuario').textContent = reservationData.piso || '--';
-            document.getElementById('estado-reservacion').textContent = reservationData.tipoCuarto || '--';
-            document.getElementById('nombre-usuario').textContent = reservationData.nombreCompleto || '';
+    // --- Cálculo dinámico de próximo pago mensual ---
+    const fechaIngreso = new Date(reserva.fechaIngreso);
+    const fechaSalida = new Date(reserva.fechaSalida);
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
 
-            document.getElementById('monto-pago').textContent = reservationData.monto ? `$${reservationData.monto.toLocaleString('es-MX')}` : '--';
-
-            if (reservationData.fechaVencimiento) {
-                const fechaVencimiento = new Date(reservationData.fechaVencimiento);
-                const dia = String(fechaVencimiento.getDate()).padStart(2, '0');
-                const mes = String(fechaVencimiento.getMonth() + 1).padStart(2, '0');
-                const anio = fechaVencimiento.getFullYear();
-                document.getElementById('fecha-pago').textContent = `${dia}/${mes}/${anio}`;
-
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-                fechaVencimiento.setHours(0, 0, 0, 0);
-
-                // Lógica de estado de pago (¡AQUÍ ES DONDE CAMBIA!)
-                if (reservationData.isPaid) { // Asumiendo que tu backend envía `isPaid: true`
-                    paymentStatusText = 'Pagado';
-                    paymentStatusClass = 'status-pagado';
-                } else if (today > fechaVencimiento) {
-                    paymentStatusText = 'Vencido';
-                    paymentStatusClass = 'status-vencido';
-                } else {
-                    paymentStatusText = 'Pendiente';
-                    paymentStatusClass = 'status-pendiente';
-                }
-
-            } else {
-                document.getElementById('fecha-pago').textContent = '--/--/----';
-                paymentStatusText = 'No aplica';
-                paymentStatusClass = 'status-no-aplica';
-            }
-
-            // Asignar el texto y la clase al <span>
-            paymentStatusSpan.textContent = paymentStatusText;
-            paymentStatusSpan.className = paymentStatusClass; // Esto reemplaza cualquier clase existente
-            
-        } else {
-            // Si no hay datos de reservación
-            document.getElementById('habitacion-usuario').textContent = '--';
-            document.getElementById('piso-usuario').textContent = '--';
-            document.getElementById('estado-reservacion').textContent = '--';
-            document.getElementById('monto-pago').textContent = '--';
-            document.getElementById('fecha-pago').textContent = '--/--/----';
-            
-            paymentStatusSpan.textContent = 'No activa';
-            paymentStatusSpan.className = 'status-no-aplica';
-        }
-
-    } catch (e) {
-        console.error('Error al cargar datos de reserva:', e);
-        // En caso de error
-        document.getElementById('habitacion-usuario').textContent = '--';
-        document.getElementById('piso-usuario').textContent = '--';
-        document.getElementById('estado-reservacion').textContent = '--';
-        document.getElementById('monto-pago').textContent = '--';
-        document.getElementById('fecha-pago').textContent = '--/--/----';
-        
-        const paymentStatusSpan = document.getElementById('payment-status');
-        paymentStatusSpan.textContent = 'Error';
-        paymentStatusSpan.className = 'status-error'; // Nueva clase para errores
+    let proximoPago = new Date(fechaIngreso);
+    while (proximoPago < hoy && proximoPago < fechaSalida) {
+      proximoPago.setMonth(proximoPago.getMonth() + 1);
     }
+
+    const vencido = hoy > proximoPago;
+    const paymentStatusSpan = document.getElementById('payment-status');
+    const fechaPagoSpan = document.getElementById('fecha-pago');
+
+    if (proximoPago <= fechaSalida) {
+      const dia = String(proximoPago.getDate()).padStart(2, '0');
+      const mes = String(proximoPago.getMonth() + 1).padStart(2, '0');
+      const anio = proximoPago.getFullYear();
+      fechaPagoSpan.textContent = `${dia}/${mes}/${anio}`;
+
+      // Estado de pago
+      if (reserva.isPaid) {
+        paymentStatusSpan.textContent = 'Pagado';
+        paymentStatusSpan.className = 'status-pagado';
+      } else if (vencido) {
+        paymentStatusSpan.textContent = 'Vencido';
+        paymentStatusSpan.className = 'status-vencido';
+      } else {
+        paymentStatusSpan.textContent = 'Pendiente';
+        paymentStatusSpan.className = 'status-pendiente';
+      }
+    } else {
+      // Ya pasó la fecha final de la estancia
+      fechaPagoSpan.textContent = '--/--/----';
+      paymentStatusSpan.textContent = 'Finalizado';
+      paymentStatusSpan.className = 'status-no-aplica';
+    }
+
+  } catch (error) {
+    console.error('Error al cargar datos de reserva:', error);
+    mostrarDatosVacios('Error');
+  }
 });
+
+function mostrarDatosVacios(statusText) {
+  document.getElementById('piso-usuario').textContent = '--';
+  document.getElementById('habitacion-usuario').textContent = '--';
+  document.getElementById('estado-reservacion').textContent = '--';
+  document.getElementById('monto-pago').textContent = '--';
+  document.getElementById('fecha-pago').textContent = '--/--/----';
+  const paymentStatusSpan = document.getElementById('payment-status');
+  paymentStatusSpan.textContent = statusText;
+  paymentStatusSpan.className = 'status-no-aplica';
+}

@@ -6,43 +6,55 @@ export const createReservation = async (req, res) => {
       nombreCompleto,
       telefono,
       universidad,
+      cuatrimestre,
       fechaIngreso,
       fechaSalida,
       tipoCuarto,
       piso,
       habitacion,
-      monto,
-      fechaVencimiento
+      montoMensual
     } = req.body;
 
     const nuevaReserva = new Reservation({
       nombreCompleto,
       telefono,
       universidad,
+      cuatrimestre,
       fechaIngreso,
       fechaSalida,
       tipoCuarto,
       piso,
       habitacion,
-      monto,
-      fechaVencimiento
+      montoMensual
     });
 
     await nuevaReserva.save();
 
-    res.status(201).json({ message: 'Reservación creada correctamente', reserva: nuevaReserva });
+    res.status(201).json({ 
+      message: 'Reservación creada correctamente', 
+      reserva: nuevaReserva 
+    });
   } catch (error) {
-    console.error('Error al crear la reservación:', error); // <--- este es el importante
-    res.status(500).json({ message: 'Error al crear la reservación', error });
+    console.error('Error al crear la reservación:', error);
+    res.status(500).json({ 
+      message: 'Error al crear la reservación', 
+      error: error.message 
+    });
   }
 };
 
 export const getReservation = async (req, res) => {
   try {
-    const reserva = await Reservation.findOne(); 
-    if (!reserva) return res.status(404).json({ message: "No hay reservación" });
-    res.json(reserva);
+    const reserva = await Reservation.findOne();
+    if (!reserva) {
+      return res.status(404).json({ message: "No hay reservaciones encontradas" });
+    }
+    res.status(200).json(reserva);
   } catch (error) {
-    res.status(500).json({ message: "Error al obtener la reservación" });
+    console.error('Error al obtener reservación:', error);
+    res.status(500).json({ 
+      message: "Error al obtener la reservación",
+      error: error.message
+    });
   }
 };

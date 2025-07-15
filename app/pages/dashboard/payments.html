@@ -20,7 +20,9 @@
         <h1 class="title">SICPES</h1>
       </div>
       <nav class="navbar-menu">
-        <a href="/home" class="nav-link"> <i class="fas fa-home"></i>Inicio </a>
+        <a href="/home" class="nav-link">
+          <i class="fas fa-home"></i>Inicio
+        </a>
       </nav>
       <nav class="navbar-menu">
         <a href="/reservations" class="nav-link">
@@ -55,13 +57,6 @@
             <button id="pay-button" class="btn btn-principal">
               Realizar Pago
             </button>
-            <p id="payment-message" style="color: red; margin-top: 10px"></p>
-          </div>
-          <div id="no-payment-info" style="display: none">
-            <p>
-              No tienes pagos pendientes en este momento o no se encontró
-              información de tu reserva.
-            </p>
           </div>
           <div id="no-payment-info" style="display: none">
             <p>
@@ -74,12 +69,68 @@
         <div class="card payment-history-card">
           <h3>Historial de Pagos</h3>
           <div class="payment-history-list">
-            <p>Aquí se mostrará tu historial de pagos.</p>
             <ul id="history-list"></ul>
           </div>
         </div>
+        <!-- Formulario de pago oculto -->
+        <section
+          id="payment-form-section"
+          style="display: none; margin-top: 20px"
+        >
+          <div class="card">
+            <h3>Formulario de Pago</h3>
+            <form id="payment-form">
+              <div>
+                <label for="card-number">Número de Tarjeta</label>
+                <input
+                  type="text"
+                  id="card-number"
+                  name="card-number"
+                  placeholder="1234 5678 9012 3456"
+                  required
+                />
+              </div>
+              <div>
+                <label for="card-name">Nombre en la Tarjeta</label>
+                <input
+                  type="text"
+                  id="card-name"
+                  name="card-name"
+                  placeholder="Nombre completo"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="expiry">Fecha de Expiración</label>
+                <input
+                  type="text"
+                  id="expiry"
+                  name="expiry"
+                  placeholder="MM/AA"
+                  required
+                />
+              </div>
+
+              <div>
+                <label for="cvv">CVV</label>
+                <input
+                  type="text"
+                  id="cvv"
+                  name="cvv"
+                  placeholder="123"
+                  required
+                />
+              </div>
+              <p id="payment-message" style="color: red; margin-top: 10px"></p>
+              <button type="submit" class="btn btn-principal">
+                Confirmar Pago
+              </button>
+            </form>
+          </div>
+        </section>
       </section>
     </main>
-    <script src="/js/dashboard/payments.js"></script>
   </body>
+  <script src="/js/dashboard/payments.js"></script>
 </html>

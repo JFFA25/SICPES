@@ -1,48 +1,47 @@
 import mongoose from 'mongoose';
 
 const reservationSchema = new mongoose.Schema({
+  // Información Personal
   nombreCompleto: {
     type: String,
-    required: true,
+    trim: true
   },
   telefono: {
     type: String,
-    required: true,
+    trim: true
   },
   universidad: {
     type: String,
-    required: true,
+    enum: ['utxj', 'iedep']
+  },
+  // Detalles de la Reserva
+  cuatrimestre: {
+    type: String,
+    enum: ['Enero-Abril', 'Mayo-Agosto', 'Septiembre-Diciembre']
   },
   fechaIngreso: {
-    type: Date,
-    required: true,
+    type: Date
   },
   fechaSalida: {
-    type: Date,
-    required: true,
+    type: Date
   },
   tipoCuarto: {
     type: String,
-    required: true,
-    enum: ['individual', 'compartida', 'dormitorio'],
+    enum: ['individual', 'compartida', 'dormitorio']
   },
   piso: {
     type: Number,
-    required: true,
+    required: true
   },
   habitacion: {
     type: Number,
-    required: true,
-  }, monto: {
-    type: Number,
-    required: true
+    requiere:true
   },
-  fechaVencimiento: { // ¡Campo agregado!
-    type: Date,
-    required: true
+  montoMensual: { 
+    type: Number
   }
 }, {
-  timestamps: true,
+  timestamps: true
 });
 
 export default mongoose.model('Reservation', reservationSchema);
