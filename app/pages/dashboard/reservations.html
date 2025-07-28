@@ -24,7 +24,7 @@
       </nav>
       <nav class="navbar-menu">
         <a href="/reservations" class="nav-link active">
-          <i class="fas fa-bed"></i>Reservaciones
+          <i class="fas fa-bed"></i>Peticiones
         </a>
       </nav>
       <nav class="navbar-menu">
@@ -41,10 +41,9 @@
 
     <main class="main-content">
       <section class="bienvenida">
-        <h2>Formulario de Reserva de Cuarto</h2>
+        <h2>Registro de Estudiantes</h2>
         <p>
-          Completa el formulario para reservar tu espacio en la residencia
-          estudiantil.
+          Completa el formulario para enviar una solicitud de cuarto.
         </p>
       </section>
       <section class="form-reserva">
@@ -79,16 +78,6 @@
                   required
                 />
               </div>
-              <div class="form-group">
-                <label for="universidad">Universidad *</label>
-                <select id="universidad" name="universidad" required>
-                  <option value="" disabled selected>
-                    Selecciona tu universidad
-                  </option>
-                  <option value="utxj">UTXJ</option>
-                  <option value="iedep">IEDEP</option>
-                </select>
-              </div>
             </div>
           </fieldset>
 
@@ -97,40 +86,16 @@
               <i class="fas fa-calendar-alt"></i> Detalles de la Reserva
             </legend>
             <div class="form-row">
-              <div class="form-group">
-                <label for="cuatrimestre">Cuatrimestre de Ingreso *</label>
-                <select id="cuatrimestre" name="cuatrimestre" required>
-                  <option value="" disabled selected>
-                    Selecciona el cuatrimestre
-                  </option>
-                  <option value="Enero-Abril">Enero - Abril</option>
-                  <option value="Mayo-Agosto">Mayo - Agosto</option>
-                  <option value="Septiembre-Diciembre">
-                    Septiembre - Diciembre
-                  </option>
-                </select>
-              </div>
             </div>
             <div class="form-row">
               <div class="form-group">
                 <label for="fechaIngreso"
-                  >Fecha de Inicio de Cuatrimestre*</label
+                  >Fecha de Ingreso *</label
                 >
                 <input
                   type="date"
                   id="fechaIngreso"
                   name="fechaIngreso"
-                  required
-                />
-              </div>
-              <div class="form-group">
-                <label for="fechaSalida"
-                  >Fecha de Salida de Cuatrimestre *</label
-                >
-                <input
-                  type="date"
-                  id="fechaSalida"
-                  name="fechaSalida"
                   required
                 />
               </div>
@@ -170,23 +135,19 @@
                     </div>
                   </div>
                 </label>
-                <label class="room-card">
-                  <input
-                    type="radio"
-                    name="tipoCuarto"
-                    value="dormitorio"
-                    required
-                  />
-                  <div>
-                    <i class="fas fa-users fa-2x"></i>
-                    <div>
-                      Dormitorio<br /><span class="room-desc"
-                        >4-6 estudiantes</span
-                      >
-                    </div>
-                  </div>
-                </label>
               </div>
+                          <div class="form-row" id="estudiantesCompartidaContainer" style="display:none;">
+              <div class="form-group">
+                <label for="estudiantesCompartida">¿Cuántos estudiantes?</label>
+                <select id="estudiantesCompartida" name="estudiantesCompartida">
+                  <option value="" disabled selected>¿Cuántos estudiantes?</option>
+                  <option value="3">3 estudiantes</option>
+                  <option value="4">4 estudiantes</option>
+                  <option value="5">5 estudiantes</option>
+                  <option value="6">6 estudiantes</option>
+                </select>
+              </div>
+            </div>
             </div>
             <div class="form-row">
               <div class="form-group">
@@ -195,8 +156,6 @@
                   <option value="" disabled selected>Selecciona un piso</option>
                   <option value="1">Piso 1</option>
                   <option value="2">Piso 2</option>
-                  <option value="3">Piso 3</option>
-                  <option value="4">Piso 4</option>
                 </select>
               </div>
               <div class="form-group">
@@ -215,18 +174,20 @@
             <div class="form-row">
               <div class="form-group">
                 <label for="montoTotalCuatrimestre"
-                  >Monto Total del Cuatrimestre *</label
+                  >Monto Inicial Por Parte del Sistema *</label
                 >
                 <input
                   type="number"
                   id="montoMensual"
                   name="montoMensual"
                   min="0"
+                  placeholder="Seleccione el tipo de habitación"
                   required
                   readonly
                 />
               </div>
             </div>
+
           </fieldset>
           <button type="submit" class="btn btn-principal">Reservar</button>
         </form>

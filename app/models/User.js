@@ -12,19 +12,19 @@ const userSchema = new mongoose.Schema({
     type: String,
     required: true
   },
-
   verificationToken: String,
   verified: {
     type: Boolean,
     default: false
   },
-// Campos NECESARIOS para recuperación de contraseña
   forgetPasswordToken: String,
-   verified:{
-    type: Boolean,
-    default: false
-   },    
-  forgetPasswordExpires: Date       
+  forgetPasswordExpires: Date,
+  rol: {
+    type: String,
+    enum: ['usuario', 'admin'],
+    default: 'usuario'
+  }
+
 }, { 
   timestamps: true 
 });

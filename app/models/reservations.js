@@ -4,30 +4,23 @@ const reservationSchema = new mongoose.Schema({
   // Información Personal
   nombreCompleto: {
     type: String,
-    trim: true
+    trim: true,
+    required: true
   },
   telefono: {
     type: String,
-    trim: true
-  },
-  universidad: {
-    type: String,
-    enum: ['utxj', 'iedep']
+    trim: true,
+    required: true
   },
   // Detalles de la Reserva
-  cuatrimestre: {
-    type: String,
-    enum: ['Enero-Abril', 'Mayo-Agosto', 'Septiembre-Diciembre']
-  },
   fechaIngreso: {
-    type: Date
-  },
-  fechaSalida: {
-    type: Date
+    type: Date,
+    required: true
   },
   tipoCuarto: {
     type: String,
-    enum: ['individual', 'compartida', 'dormitorio']
+    enum: ['individual', 'compartida', 'dormitorio'],
+    required: true
   },
   piso: {
     type: Number,
@@ -35,13 +28,20 @@ const reservationSchema = new mongoose.Schema({
   },
   habitacion: {
     type: Number,
-    requiere:true
+    required: true
   },
   montoMensual: { 
-    type: Number
+    type: Number,
+    required: true
+  },
+  estudiantesCompartida: {
+    type: Number // Solo se usa si tipoCuarto es 'compartida'
+  },
+  estado: {
+    type: String,
+    enum: ['pendiente', 'aceptada', 'rechazada'],
+    default: 'pendiente'
   }
-}, {
-  timestamps: true
-});
+}, { timestamps: true });
 
 export default mongoose.model('Reservation', reservationSchema);

@@ -14,11 +14,17 @@ document.addEventListener('DOMContentLoaded', async () => {
       ? `$${parseFloat(reserva.montoMensual).toLocaleString('es-MX')}`
       : '--';
 
+    // --- Mostrar fecha actual ---
+    const hoy = new Date();
+    hoy.setHours(0, 0, 0, 0);
+    const diaHoy = String(hoy.getDate()).padStart(2, '0');
+    const mesHoy = String(hoy.getMonth() + 1).padStart(2, '0');
+    const anioHoy = hoy.getFullYear();
+    document.getElementById('fecha-actual').textContent = `${diaHoy}/${mesHoy}/${anioHoy}`;
+
     // --- Cálculo dinámico de próximo pago mensual ---
     const fechaIngreso = new Date(reserva.fechaIngreso);
     const fechaSalida = new Date(reserva.fechaSalida);
-    const hoy = new Date();
-    hoy.setHours(0, 0, 0, 0);
 
     let proximoPago = new Date(fechaIngreso);
     while (proximoPago < hoy && proximoPago < fechaSalida) {
@@ -64,7 +70,8 @@ function mostrarDatosVacios(statusText) {
   document.getElementById('habitacion-usuario').textContent = '--';
   document.getElementById('estado-reservacion').textContent = '--';
   document.getElementById('monto-pago').textContent = '--';
-  document.getElementById('fecha-pago').textContent = '--/--/----';
+  document.getElementById('fecha-actual').textContent = '--';
+  document.getElementById('fecha-pago').textContent = '--';
   const paymentStatusSpan = document.getElementById('payment-status');
   paymentStatusSpan.textContent = statusText;
   paymentStatusSpan.className = 'status-no-aplica';

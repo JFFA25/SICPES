@@ -3,9 +3,9 @@ dotenv.config();
 import express from "express";
 import path from "path";
 import { fileURLToPath } from "url";
-import usersRoutes from "./routes/usersRoutes.js";
-import reservationRoutes from "./routes/reservationRoutes.js";
-import paymentRoutes from "./routes/paymentRoutes.js";
+import usersRoutes from "./routes/authentication.routes.js";
+import reservationRoutes from "./routes/reservation.routes.js";
+import paymentRoutes from "./routes/payment.routes.js";
 import connectDB from "./db/db.js";
 
 const app = express();
@@ -20,9 +20,11 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(express.static(path.join(__dirname, "public")));
 
+//Routing
 app.use("/api/auth", usersRoutes);
 app.use("/api/dashboard", reservationRoutes);
 app.use('/api/dashboard', paymentRoutes);
+
 
 app.get("/", (req, res) =>
   res.sendFile(path.join(__dirname, "pages/index.html"))
@@ -54,7 +56,9 @@ app.get("/reservations", (req, res) =>
 app.get("/payments", (req, res) =>
   res.sendFile(path.join(__dirname, "pages/dashboard/payments.html"))
 );
-
+app.get("/admin", (req, res) =>
+  res.sendFile(path.join(__dirname, "pages/admin/home.html"))
+);
 
 
 app.listen(PORT, () => {

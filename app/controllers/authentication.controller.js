@@ -5,6 +5,8 @@ import { sendVerificationEmail } from '../utils/mailer.js';
 import { forgetPasswordEmail } from '../utils/forgetPassword.js';
 
 //Validar usuario
+// controllers/authentication.controller.js
+
 export const login = async (req, res) => {
   try {
     const { email, password } = req.body;
@@ -27,7 +29,11 @@ export const login = async (req, res) => {
       return res.status(400).json({ error: 'Correo o contraseña incorrectos.' });
     }
 
-    // Éxito: responder con JSON
+   
+    if (user.rol === 'admin') {
+      return res.status(200).json({ redirectTo: '/admin' });
+    }
+
     return res.status(200).json({ redirectTo: '/home' });
 
   } catch (err) {
@@ -168,3 +174,21 @@ export const resetPassword = async (req, res) => {
   }
 };
 
+// Crear administrador
+export const crearAdmin = async (req, res) => {
+  const email = 'admin.sicpes@gmail.com';
+  const password = await bcrypt.hash('admin123', 10);
+
+  const existe = await User.findOne({ email });
+  if (existe) return res.send('Ya existe el admin');
+
+  const admin = new User({
+    email,
+    password,
+    verified: true,
+    rol: 'admin'
+  });
+
+  await admin.save();
+  res.send('Administrador creado correctamente');
+};

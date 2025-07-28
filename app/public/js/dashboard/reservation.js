@@ -4,19 +4,62 @@ document.addEventListener('DOMContentLoaded', () => {
   const montoMensualInput = document.getElementById('montoMensual');
   const tipoCuartoRadios = document.querySelectorAll('input[name="tipoCuarto"]');
   const fechaIngresoInput = document.getElementById('fechaIngreso');
-  const fechaSalidaInput = document.getElementById('fechaSalida');
+  const pisoSelect = document.getElementById('piso');
+  const habitacionSelect = document.getElementById('habitacion');
+  const estudiantesCompartidaSelect = document.getElementById('estudiantesCompartida');
+  const estudiantesCompartidaContainer = document.getElementById('estudiantesCompartidaContainer');
+  const telefonoInput = document.getElementById('telefono');
+  const nombreCompletoInput = document.getElementById('nombreCompleto');
+  const universidadInput = document.getElementById('universidad');
 
   // Precios según tipo de habitación
   const precios = {
-    individual: 1800,
-    compartida: 900,
-    dormitorio: 750
+    individual: 1200,
+    compartida: 1400,
   };
 
-  // Actualizar monto mensual cuando cambia el tipo de cuarto
+  // Configurar habitaciones por piso
+  const habitacionesPorPiso = { '1': ['101', '102', '103'], '2': ['201', '202', '203'] };
+
+  // Inicialmente deshabilitar el select de habitación
+  if (habitacionSelect) {
+    habitacionSelect.disabled = true;
+  }
+
+  // Ocultar el contenedor de estudiantes compartida al inicio
+  if (estudiantesCompartidaContainer) {
+    estudiantesCompartidaContainer.style.display = 'none';
+  }
+
+  // Actualizar opciones de habitación cuando cambia el piso
+  if (pisoSelect && habitacionSelect) {
+    pisoSelect.addEventListener('change', () => {
+      const pisoSeleccionado = pisoSelect.value;
+
+      habitacionSelect.disabled = !pisoSeleccionado;
+      habitacionSelect.innerHTML = '<option value="" disabled selected>Selecciona una habitación</option>';
+
+      if (pisoSeleccionado) {
+        habitacionesPorPiso[pisoSeleccionado].forEach(habitacion => {
+          const option = document.createElement('option');
+          option.value = habitacion;
+          option.textContent = `Habitación ${habitacion}`;
+          habitacionSelect.appendChild(option);
+        });
+      }
+    });
+  }
+
+  // Mostrar/ocultar contenedor de estudiantes compartida según tipo de cuarto
   tipoCuartoRadios.forEach(radio => {
     radio.addEventListener('change', () => {
       montoMensualInput.value = precios[radio.value] || '';
+      if (radio.value === 'compartida') {
+        estudiantesCompartidaContainer.style.display = 'flex';
+      } else {
+        estudiantesCompartidaContainer.style.display = 'none';
+        estudiantesCompartidaSelect.value = '';
+      }
     });
   });
 
@@ -28,20 +71,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Recolectar datos del formulario
       const data = {
-        nombreCompleto: form.elements['nombreCompleto'].value,
-        telefono: form.elements['telefono'].value,
-        universidad: form.elements['universidad'].value,
-        cuatrimestre: form.elements['cuatrimestre'].value,
+        nombreCompleto: nombreCompletoInput.value,
+        telefono: telefonoInput.value,
+        universidad: universidadInput.value,
         fechaIngreso: fechaIngresoInput.value,
-        fechaSalida: fechaSalidaInput.value,
         tipoCuarto: form.elements['tipoCuarto'].value,
-        piso: form.elements['piso'].value,
-        habitacion: form.elements['habitacion'].value,
-        montoMensual: montoMensualInput.value
+        piso: pisoSelect.value,
+        habitacion: habitacionSelect.value,
+        montoMensual: montoMensualInput.value,
+        estudiantesCompartida: estudiantesCompartidaContainer.style.display === 'flex' ? estudiantesCompartidaSelect.value : ''
       };
 
       // Validar campos obligatorios
-      if (Object.values(data).some(val => !val)) {
+      if (
+        !data.nombreCompleto ||
+        !data.telefono ||
+        !data.universidad ||
+        !data.fechaIngreso ||
+        !data.tipoCuarto ||
+        !data.piso ||
+        !data.habitacion ||
+        !data.montoMensual ||
+        (data.tipoCuarto === 'compartida' && !data.estudiantesCompartida)
+      ) {
         mensaje.textContent = 'Por favor, completa todos los campos obligatorios.';
         mensaje.style.color = 'red';
         return;
@@ -62,13 +114,13 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error(result.message || 'Error al procesar la reserva');
         }
 
-        // Éxito
         mensaje.textContent = '¡Reserva creada exitosamente!';
         mensaje.style.color = 'green';
         form.reset();
         montoMensualInput.value = '';
+        habitacionSelect.disabled = true;
+        estudiantesCompartidaContainer.style.display = 'none';
 
-        // Redirección opcional después de 2 segundos
         setTimeout(() => {
           window.location.href = '/reservations';
         }, 2000);

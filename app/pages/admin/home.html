@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <title>Panel de Reservaciones - Admin</title>
+  <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Inicio</title>
+    <link rel="stylesheet" href="/css/navbar.css" />
+    <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
+    <link rel="icon" href="/assets/icon.png" type="image/x-icon" />
+</head>
+<body>
+      <!-- Navbar -->
+    <header class="navbar">
+      <div class="navbar-left">
+        <img src="/assets/icon.png" alt="Residencia Dorada" class="logo" />
+        <h1 class="title">SICPES</h1>
+      </div>
+      <nav class="navbar-menu">
+        <a href="/admin" class="nav-link active">
+          <i class="fas fa-home"></i>Inicio
+        </a>
+      </nav>
+      <nav class="navbar-menu">
+        <a href="" class="nav-link active">
+          <i class="fas fa-bed"></i>Peticiones
+        </a>
+      </nav>
+      <nav class="navbar-menu">
+        <a href="" class="nav-link active">
+          <i class="fas fa-credit-card"></i>Pagos
+        </a>
+      </nav>
+      <div class="navbar-right">
+        <button class="logout-btn">
+          <i class="fas fa-sign-out-alt"></i> Cerrar sesión
+        </button>
+      </div>
+    </header>
+  <h2>Reservaciones Pendientes</h2>
+  <table id="tablaReservaciones">
+    <thead>
+      <tr>
+        <th>Nombre</th>
+        <th>Teléfono</th>
+        <th>Tipo de Cuarto</th>
+        <th>Piso</th>
+        <th>Habitación</th>
+        <th>Estado</th>
+        <th>Acciones</th>
+      </tr>
+    </thead>
+    <tbody>
+      <!-- Aquí se llenarán las reservaciones -->
+    </tbody>
+  </table>
+  <script src="/js/admin/home.js"></script>
+</body>
+</html>

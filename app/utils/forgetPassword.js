@@ -21,7 +21,7 @@ export async function forgetPasswordEmail(email, token) {
       <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
         <!-- Header -->
         <div style="text-align: center; padding: 30px 0; background-color: #2e7d32; color: white;">
-          <img src="http://localhost:3000/assets/icon.png" alt="Logo SICPES" style="height: 60px;">
+          <img src="http://localhost:3000/assets/SICPES.png" alt="Logo SICPES" style="height: 60px;">
           <h1 style="font-weight: 500; margin: 15px 0 0 0;">Restablecer Contraseña</h1>
         </div>
         
@@ -48,7 +48,7 @@ export async function forgetPasswordEmail(email, token) {
         <!-- Footer -->
         <div style="background-color: #f5f7fa; padding: 25px 30px; border-top: 1px solid #e0e0e0;">
           <div style="text-align: center; margin-bottom: 15px;">
-            <img src="http://localhost:3000/assets/icon.png" alt="Logo SICPES" style="height: 30px; opacity: 0.8;">
+            <img src="https://imgur.com/a/7QnSVx8" alt="Logo SICPES" style="height: 30px; opacity: 0.8;">
             <div style="font-size: 14px; color: #2e7d32; font-weight: 500; margin-top: 5px;">
               Sistema Integral de Control de Pensión de Estudiantes
             </div>

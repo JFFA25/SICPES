@@ -23,7 +23,7 @@ export async function sendVerificationEmail(email, token) {
       <div style="font-family: 'Helvetica Neue', Arial, sans-serif; max-width: 600px; margin: 0 auto; color: #333; border: 1px solid #e0e0e0; border-radius: 8px; overflow: hidden;">
         <!-- Header -->
         <div style="text-align: center; padding: 30px 0; background-color: #2e7d32; color: white;">
-          <img src="http://localhost:3000/assets/icon.png" alt="Logo SICPES" style="height: 60px;">
+          <img src="https://imgur.com/a/7QnSVx8" alt="Logo SICPES" style="height: 60px;">
           <h1 style="font-weight: 500; margin: 15px 0 0 0;">Verifica tu cuenta</h1>
         </div>
         

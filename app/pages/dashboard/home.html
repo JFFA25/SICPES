@@ -6,6 +6,7 @@
     <title>Inicio</title>
     <link rel="stylesheet" href="/css/navbar.css" />
     <link rel="stylesheet" href="/css/home.css" />
+    <link rel="stylesheet" href="/css/footer.css" />
     <link rel="icon" href="/assets/icon.png" type="image/x-icon" />
     <link
       rel="stylesheet"
@@ -26,7 +27,7 @@
       </nav>
       <nav class="navbar-menu">
         <a href="/reservations" class="nav-link active">
-          <i class="fas fa-bed"></i>Reservaciones
+          <i class="fas fa-bed"></i>Peticiones
         </a>
       </nav>
       <nav class="navbar-menu">
@@ -49,30 +50,22 @@
       <section class="resumen-usuario">
         <div class="card">
           <h3>Tu reservación</h3>
-          <p>Piso: <span id="piso-usuario">--</span></p>
-          <p>Habitación: <span id="habitacion-usuario">--</span></p>
-          <p>Estado: <span id="estado-reservacion">--</span></p>
+          <p>Piso: <span id="piso-usuario"></span></p>
+          <p>Habitación: <span id="habitacion-usuario"></span></p>
+          <p>Estado: <span id="estado-reservacion"></span></p>
         </div>
         <div class="card">
           <h3>Próximo pago</h3>
-          <p>Monto: <span id="monto-pago">--</span></p>
-          <p>Vence: <span id="fecha-pago">--/--/----</span></p>
-          <p>Estado de pago: <span id="payment-status">--</span></p>
+          <p>Monto: <span id="monto-pago"></span></p>
+          <p>Fecha Actual: <span id="fecha-actual"></span></p>
+          <p>Vence: <span id="fecha-pago"></span></p>
+          <p>Estado: <span id="payment-status"></span></p>
         </div>
         <div class="card">
-          <h3>Accesos rápidos</h3>
-          <a href="/reservation" class="nav-link">Reservar cuarto</a><br />
-          <a href="/profile" class="nav-link">Editar perfil</a>
+          <h3>Avisos</h3>
         </div>
-      </section>
-      <section class="avisos">
-        <h3>Avisos</h3>
-        <ul id="lista-avisos">
-          <!-- Aquí aparecerán avisos dinámicos -->
-        </ul>
       </section>
     </main>
   </body>
   <script src="/js/dashboard/home.js"></script>
-  <script src="/js/logout.js"></script>
 </html>

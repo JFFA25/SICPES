@@ -26,7 +26,7 @@
       </nav>
       <nav class="navbar-menu">
         <a href="/reservations" class="nav-link">
-          <i class="fas fa-bed"></i>Reservaciones
+          <i class="fas fa-bed"></i>Peticiones
         </a>
       </nav>
       <nav class="navbar-menu">
@@ -51,8 +51,8 @@
         <div class="card payment-card">
           <h3>Tu Próximo Pago</h3>
           <div id="payment-details">
-            <p>Monto Pendiente: <span id="pending-amount">--</span></p>
-            <p>Fecha de Vencimiento: <span id="due-date">--/--/----</span></p>
+            <p>Monto Pendiente: <span id="pending-amount"></span></p>
+            <p>Fecha de Vencimiento: <span id="due-date"></span></p>
             <p>Estado: <span id="payment-status">Pendiente</span></p>
             <button id="pay-button" class="btn btn-principal">
               Realizar Pago
@@ -72,64 +72,6 @@
             <ul id="history-list"></ul>
           </div>
         </div>
-        <!-- Formulario de pago oculto -->
-        <section
-          id="payment-form-section"
-          style="display: none; margin-top: 20px"
-        >
-          <div class="card">
-            <h3>Formulario de Pago</h3>
-            <form id="payment-form">
-              <div>
-                <label for="card-number">Número de Tarjeta</label>
-                <input
-                  type="text"
-                  id="card-number"
-                  name="card-number"
-                  placeholder="1234 5678 9012 3456"
-                  required
-                />
-              </div>
-              <div>
-                <label for="card-name">Nombre en la Tarjeta</label>
-                <input
-                  type="text"
-                  id="card-name"
-                  name="card-name"
-                  placeholder="Nombre completo"
-                  required
-                />
-              </div>
-
-              <div>
-                <label for="expiry">Fecha de Expiración</label>
-                <input
-                  type="text"
-                  id="expiry"
-                  name="expiry"
-                  placeholder="MM/AA"
-                  required
-                />
-              </div>
-
-              <div>
-                <label for="cvv">CVV</label>
-                <input
-                  type="text"
-                  id="cvv"
-                  name="cvv"
-                  placeholder="123"
-                  required
-                />
-              </div>
-              <p id="payment-message" style="color: red; margin-top: 10px"></p>
-              <button type="submit" class="btn btn-principal">
-                Confirmar Pago
-              </button>
-            </form>
-          </div>
-        </section>
-      </section>
     </main>
   </body>
   <script src="/js/dashboard/payments.js"></script>
