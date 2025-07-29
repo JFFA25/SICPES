@@ -5,7 +5,6 @@ import { sendVerificationEmail } from '../utils/mailer.js';
 import { forgetPasswordEmail } from '../utils/forgetPassword.js';
 
 //Validar usuario
-// controllers/authentication.controller.js
 
 export const login = async (req, res) => {
   try {

@@ -1,11 +1,12 @@
 import dotenv from "dotenv";
 dotenv.config();
 import express from "express";
-import path from "path";
+import path from "path";// En tu index.js
+import cors from 'cors';
 import { fileURLToPath } from "url";
 import usersRoutes from "./routes/authentication.routes.js";
 import reservationRoutes from "./routes/reservation.routes.js";
-import paymentRoutes from "./routes/payment.routes.js";
+import adminRoutes from "./routes/admin.routes.js";
 import connectDB from "./db/db.js";
 
 const app = express();
@@ -15,6 +16,7 @@ const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 connectDB();
+app.use(cors());
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
@@ -23,7 +25,8 @@ app.use(express.static(path.join(__dirname, "public")));
 //Routing
 app.use("/api/auth", usersRoutes);
 app.use("/api/dashboard", reservationRoutes);
-app.use('/api/dashboard', paymentRoutes);
+app.use('/api/admin', adminRoutes); 
+
 
 
 app.get("/", (req, res) =>

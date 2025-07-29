@@ -73,7 +73,6 @@ document.addEventListener('DOMContentLoaded', () => {
       const data = {
         nombreCompleto: nombreCompletoInput.value,
         telefono: telefonoInput.value,
-        universidad: universidadInput.value,
         fechaIngreso: fechaIngresoInput.value,
         tipoCuarto: form.elements['tipoCuarto'].value,
         piso: pisoSelect.value,
@@ -86,7 +85,6 @@ document.addEventListener('DOMContentLoaded', () => {
       if (
         !data.nombreCompleto ||
         !data.telefono ||
-        !data.universidad ||
         !data.fechaIngreso ||
         !data.tipoCuarto ||
         !data.piso ||
@@ -114,7 +112,7 @@ document.addEventListener('DOMContentLoaded', () => {
           throw new Error(result.message || 'Error al procesar la reserva');
         }
 
-        mensaje.textContent = '¡Reserva creada exitosamente!';
+        mensaje.textContent = '¡Tu solicitud de reserva ha sido recibida y está en espera de aprobación!';
         mensaje.style.color = 'green';
         form.reset();
         montoMensualInput.value = '';

@@ -17,6 +17,9 @@ const reservationSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
+  fechaSalida: {
+    type: Date
+  },
   tipoCuarto: {
     type: String,
     enum: ['individual', 'compartida', 'dormitorio'],
@@ -39,7 +42,7 @@ const reservationSchema = new mongoose.Schema({
   },
   estado: {
     type: String,
-    enum: ['pendiente', 'aceptada', 'rechazada'],
+    enum: ['pendiente', 'aceptada', 'rechazada', 'finalizada'],
     default: 'pendiente'
   }
 }, { timestamps: true });

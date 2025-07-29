@@ -15,6 +15,7 @@ export const createReservation = async (req, res) => {
     } = req.body;
 
     const nuevaReserva = new Reservation({
+      
       nombreCompleto,
       telefono,
       universidad,
