@@ -1,6 +1,11 @@
+// models/User.js
 import mongoose from 'mongoose';
 
 const userSchema = new mongoose.Schema({
+  _id: Number, // ID numérico
+  name: {
+    type: String
+  },
   email: {
     type: String,
     required: true,
@@ -24,9 +29,9 @@ const userSchema = new mongoose.Schema({
     enum: ['usuario', 'admin'],
     default: 'usuario'
   }
-
-}, { 
-  timestamps: true 
+}, {
+  timestamps: true,
+  _id: false // Desactiva el ObjectId automático
 });
 
 export default mongoose.model('User', userSchema);

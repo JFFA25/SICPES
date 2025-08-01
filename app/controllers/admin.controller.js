@@ -1,76 +1,60 @@
 import Reservation from '../models/reservations.js';
 
-export const getPendingReservations = async (req, res) => {
+//Muestra las reservas pendientes
+export const getPendientes = async (req, res) => {
   try {
-    const reservaciones = await Reservation.find({ estado: 'pendiente' })
-      .sort({ createdAt: -1 }); // Ordena por las más recientes primero
-    
-    if (!reservaciones.length) {
-      return res.status(200).json([]); // Devuelve array vacío si no hay
-    }
-
-    res.status(200).json(reservaciones);
+    const pendientes = await Reservation.find({ estado: 'pendiente' });
+    res.json(pendientes);
   } catch (error) {
-    console.error('Error al obtener reservaciones:', error);
-    res.status(500).json({ 
-      error: 'Error al obtener reservaciones',
-      details: error.message 
-    });
+    res.status(500).json({ message: 'Error al obtener reservas pendientes' });
   }
 };
-export const cambiarEstadoReservacion = async (req, res) => {
+
+// Aprobar una reservación
+export const approveReservation = async (req, res) => {
   try {
     const { id } = req.params;
-    const { estado } = req.body;
-
-    const reservacion = await Reservation.findByIdAndUpdate(
+    const reserva = await Reservation.findByIdAndUpdate(
       id,
-      { estado },
-      { new: true, runValidators: true }
+      { estado: 'aceptada' },
+      { new: true }
     );
-
-    if (!reservacion) {
-      return res.status(404).json({ error: 'Reservación no encontrada' });
-    }
-
-    res.status(200).json(reservacion);
+    if (!reserva) return res.status(404).json({ message: 'Reservación no encontrada' });
+    res.json(reserva);
   } catch (error) {
-    res.status(400).json({ 
-      error: 'Error al actualizar el estado',
-      details: error.message 
-    });
+    res.status(500).json({ message: 'Error al aprobar la reservación' });
   }
 };
-export const eliminarReservacion = async (req, res) => {
+
+// Rechazar
+export const rejectReservation = async (req, res) => {
   try {
     const { id } = req.params;
-    const result = await Reservation.findByIdAndDelete(id);
-    if (!result) return res.status(404).json({ error: 'Reservación no encontrada' });
-    res.status(200).json({ message: 'Reservación eliminada correctamente' });
+    const reserva = await Reservation.findByIdAndUpdate(
+      id,
+      { estado: 'rechazada' },
+      { new: true }
+    );
+    if (!reserva) return res.status(404).json({ message: 'Reservación no encontrada' });
+    res.json(reserva);
   } catch (error) {
-    res.status(400).json({ error: 'Error al eliminar la reservación', details: error.message });
+    res.status(500).json({ message: 'Error al rechazar la reservación' });
   }
 };
-export const getAllReservations = async (req, res) => {
-  try {
-    const reservaciones = await Reservation.find().sort({ createdAt: -1 });
-    res.status(200).json(reservaciones);
-  } catch (error) {
-    res.status(500).json({ 
-      error: 'Error al obtener todas las reservaciones',
-      details: error.message 
-    });
-  }
-};
-export const getReservationById = async (req, res) => {
+
+// Editar
+export const updateReservation = async (req, res) => {
   try {
     const { id } = req.params;
-    const reservacion = await Reservation.findById(id);
-    if (!reservacion) {
-      return res.status(404).json({ error: 'Reservación no encontrada' });
-    }
-    res.status(200).json(reservacion);
+    const data = req.body;
+    const reserva = await Reservation.findByIdAndUpdate(
+      id,
+      data,
+      { new: true }
+    );
+    if (!reserva) return res.status(404).json({ message: 'Reservación no encontrada' });
+    res.json(reserva);
   } catch (error) {
-    res.status(500).json({ error: 'Error al obtener la reservación', details: error.message });
+    res.status(500).json({ message: 'Error al editar la reservación' });
   }
 };

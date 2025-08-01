@@ -8,9 +8,6 @@ document.addEventListener('DOMContentLoaded', () => {
   const habitacionSelect = document.getElementById('habitacion');
   const estudiantesCompartidaSelect = document.getElementById('estudiantesCompartida');
   const estudiantesCompartidaContainer = document.getElementById('estudiantesCompartidaContainer');
-  const telefonoInput = document.getElementById('telefono');
-  const nombreCompletoInput = document.getElementById('nombreCompleto');
-  const universidadInput = document.getElementById('universidad');
 
   // Precios según tipo de habitación
   const precios = {
@@ -71,8 +68,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Recolectar datos del formulario
       const data = {
-        nombreCompleto: nombreCompletoInput.value,
-        telefono: telefonoInput.value,
         fechaIngreso: fechaIngresoInput.value,
         tipoCuarto: form.elements['tipoCuarto'].value,
         piso: pisoSelect.value,
@@ -83,8 +78,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
       // Validar campos obligatorios
       if (
-        !data.nombreCompleto ||
-        !data.telefono ||
         !data.fechaIngreso ||
         !data.tipoCuarto ||
         !data.piso ||
@@ -103,6 +96,7 @@ document.addEventListener('DOMContentLoaded', () => {
           headers: {
             'Content-Type': 'application/json'
           },
+          credentials: 'include', 
           body: JSON.stringify(data)
         });
 

@@ -8,9 +8,14 @@ document.getElementById('loginForm').addEventListener('submit', async (e) => {
   try {
     const response = await fetch('/api/auth/login', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json'
+      }
+      ,
+      credentials: 'include',
       body: JSON.stringify({ email, password })
     });
+
 
     const data = await response.json();
     console.log(data);

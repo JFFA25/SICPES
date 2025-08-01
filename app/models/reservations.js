@@ -1,15 +1,10 @@
 import mongoose from 'mongoose';
 
 const reservationSchema = new mongoose.Schema({
-  // Información Personal
-  nombreCompleto: {
-    type: String,
-    trim: true,
-    required: true
-  },
-  telefono: {
-    type: String,
-    trim: true,
+  _id:Number,// ID numerico
+  usuario: {
+    type: Number,
+    ref: 'User',
     required: true
   },
   // Detalles de la Reserva
@@ -33,7 +28,7 @@ const reservationSchema = new mongoose.Schema({
     type: Number,
     required: true
   },
-  montoMensual: { 
+  montoMensual: {
     type: Number,
     required: true
   },
@@ -46,5 +41,6 @@ const reservationSchema = new mongoose.Schema({
     default: 'pendiente'
   }
 }, { timestamps: true });
+
 
 export default mongoose.model('Reservation', reservationSchema);

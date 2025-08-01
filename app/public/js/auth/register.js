@@ -1,18 +1,16 @@
 document.getElementById('registerForm').addEventListener('submit', async (e) => {
   e.preventDefault();
-
+  const name = e.target.elements.name;
   const email = e.target.elements.email;
   const password = e.target.elements.password;
-  const confirmPassword = e.target.elements.confirmPassword;
-
   try {
     const response = await fetch('/api/auth/register', {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({
+        name: name.value,
         email: email.value,
         password: password.value,
-        confirmPassword: confirmPassword.value
       })
     });
 
@@ -33,10 +31,8 @@ document.getElementById('registerForm').addEventListener('submit', async (e) => 
       alert(data.error);
       return;
     }
-
     alert(data.message || 'Registro exitoso.');
     e.target.reset();
-   
 
   } catch (err) {
     console.error(err);

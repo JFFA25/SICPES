@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="es">
   <head>
-    <title>Panel de Administracion</title>
+    <title>Administracion</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="/css/admin.css" />
@@ -39,29 +39,22 @@
 
     <main class="admin-container">
       <div class="header-section">
-        <h2>Reservaciones Pendientes</h2>
+        <h2>Peticiones Pendientes</h2>
         <div class="actions">
           <div class="search-box">
             <i class="fas fa-search"></i>
             <input type="text" placeholder="Buscar reservación..." id="searchInput">
           </div>
-          <select id="estadoFiltro">
-            <option value="todas">Todas</option>
-            <option value="pendiente">Pendiente</option>
-            <option value="aceptada">Aceptada</option>
-            <option value="rechazada">Rechazada</option>
-            <option value="finalizada">Finalizada</option>
-          </select>
         </div>
       </div>
-
       <div class="card">
         <div class="table-responsive">
           <table id="tablaReservaciones">
             <thead>
               <tr>
-                <th>Nombre</th>
-                <th>Teléfono</th>
+                <th>ID</th>
+                <th>Usuario</th>
+                 <th>Ingreso</th>
                 <th>Tipo de Cuarto</th>
                 <th>Piso</th>
                 <th>Habitación</th>
